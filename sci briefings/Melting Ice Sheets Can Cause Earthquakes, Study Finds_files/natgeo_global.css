@@ -1,0 +1,110 @@
+body { margin: 0px; padding: 0px; }
+
+/* Text Headers, Named with color and size */
+.globalHeaderBlack28	{ font-size: 28px; color: #000000; }
+.globalHeaderBlack16	{ font-size: 16px; color: #000000; font-weight: bold; }
+.globalHeaderBlack14	{ font-size: 14px; color: #000000; font-weight: bold; }
+.globalHeaderBlue20		{ font-size: 20px; color: #044e8e; font-weight: bold; }
+.globalHeaderBlue14		{ font-size: 14px; color: #044e8e; font-weight: bold; }
+.globalHeaderBlue12		{ font-size: 12px; color: #044e8e; font-weight: bold; }
+.globalHeaderOrange20	{ font-size: 20px; color: #cc6600; font-weight: bold; }
+.globalHeaderOrange18	{ font-size: 18px; color: #cc6600; font-weight: bold; }
+.globalHeaderOrange16	{ font-size: 16px; color: #cc6600; font-weight: bold; }
+.globalHeaderOrange15	{ font-size: 15px; color: #cc6600; font-weight: bold; }
+.globalHeaderOrange14	{ font-size: 14px; color: #cc6600; font-weight: bold; }
+.globalHeaderWhite15	{ font-size: 15px; color: #ffffff; font-weight: bold; }
+.globalHeaderWhite14	{ font-size: 14px; color: #ffffff; font-weight: 300; }
+
+.globalAd { font-size: 10px; color: #cccccc; text-transform: uppercase; }
+
+/* Dashed Lines: the art is 1 pixel high and 3 pixels wide used as a horizontally repeating background */
+.globalDashGrey { height: 3px;
+	background: url(http://www.nationalgeographic.com/global/images/art_dash_f7f6f3.gif) repeat-x #f7f6f3; }
+.globalDashWhite { height: 3px;
+	background: url(http://www.nationalgeographic.com/global/images/art_dash_ffffff.gif) repeat-x #ffffff; }
+
+/* Global Nav Header and Search Area */
+.globalHeaderWhiteText				{ font-family: Arial, sans-serif; font-size: 11px; color: #ffffff; font-weight: bold; }
+.globalHeaderWhiteText a:link		{ color: #ffffff; text-decoration: none; }
+.globalHeaderWhiteText a:active		{ color: #ffffff; text-decoration: none; }
+.globalHeaderWhiteText a:visited	{ color: #ffffff; text-decoration: none; }
+.globalHeaderWhiteText a:hover		{ color: #ffffff; text-decoration: underline; }
+
+.globalSearchBox { width: 189px; height: 16px; padding: 0px; margin: 0px; overflow: hidden; }
+.globalSearchInput { width: 189px; height: 17px; border: 0px; padding: 0px; margin: 0px; }
+
+/* Left Column, Navigation Column */
+.globalLeftNavStyle {
+	font-family: Arial, sans-serif;
+	color: #000000;
+	text-decoration: none;
+	}
+.globalLeftNavStyle a:link		{ color: #044e8e; text-decoration: none; }
+.globalLeftNavStyle a:active	{ color: #000000; text-decoration: none; }
+.globalLeftNavStyle a:visited	{ color: #044e8e; text-decoration: none; }
+.globalLeftNavStyle a:hover		{ color: #044e8e; text-decoration: underline; }
+
+/* left-nav is the name of the container for the global navigation */
+#global-left-nav {
+	width: 140px; margin: 0px; padding: 0px;
+	color: #ffffff; font-weight: bold;
+	background: url(http://www.nationalgeographic.com/global/images/globalnav/shadow.gif) repeat-y #858585;
+	}
+#global-left-nav ul {
+	font-family: Arial, sans-serif;	font-size: 11px;
+	margin: 0px; padding: 0px;
+	list-style-type: none;
+	text-transform: uppercase;
+}
+#global-left-nav li { width:140px; }
+#global-left-nav a {
+	display: block;
+	color: #ffffff;
+	padding: 3px 10px 3px 13px;  /* Top Right Bottom Left -- padding for the nav text */
+	border-bottom: 1px solid #999999;
+}
+
+#global-left-nav a:hover {  /* background art for mouseover */
+	text-decoration: none;
+	color: #FFCE00;
+}
+#global-left-nav ul li a.magazine-nav-link {
+	border: 0;
+	font-weight: normal;
+	margin-left: 10px;
+}
+#global-left-nav ul li a.magazine-nav-link-top {
+	border-bottom: 0;
+}
+#global-left-nav ul li a.magazine-nav-link-bottom {
+	border-top: 0;
+	font-weight: normal;
+	margin-left: 10px;
+}
+
+/* create space between the two nav sections and keep the UL intact */
+#global-left-nav .nav-space {
+	height: 36px;
+	border-bottom: 1px solid #999999;
+}
+
+.globalLeftText { font-size: 12px; color: #666666; padding-top:5px; }
+.globalNavShops {
+	font-size: 12px;
+	margin-left: 23px; text-indent: -10px; /* 23-10=13. 13px of left margin and 10 pixel wraps the text under the first line */
+	margin-top: 4px; margin-right: 10px; margin-bottom: 4px; color: #044e8e;
+}
+
+#globalContentCorner {
+	position: static; z-index: -1; width: 840px; margin: 0px; padding: 0px;
+	background: url(http://www.nationalgeographic.com/global/images/globalnav/shadow-corner.gif) no-repeat #ffffff;
+	}
+
+.advertisement { font-size: 10px; color: #cccccc; text-transform: uppercase; }
+
+/* Footer */
+.globalFooter 			{ font-family: Arial, sans-serif; font-size: 13px; color: #aaaaaa; text-decoration: none; }
+.globalFooter a:link	{ color: #044e8e; text-decoration: none; }
+.globalFooter a:active	{ color: #000000; text-decoration: none; }
+.globalFooter a:visited	{ color: #044e8e; text-decoration: none; }
+.globalFooter a:hover	{ color: #044e8e; text-decoration: underline; }

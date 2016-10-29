@@ -1,0 +1,30 @@
+function onInit() {
+	document.getElementById('Stage').addEventListener('click', handleClickthroughButtonClick, false);
+	document.getElementById('Stage').style.visibility = "visible";
+	document.getElementById('Stage').style.cursor = "pointer";
+	//init();
+}
+function handleClickthroughButtonClick() {
+	EB.clickthrough();
+}
+
+var domlistening = false;
+function checkInit() {
+	if ( !!EB && !EB.isInitialized() ) {
+		EB.addEventListener(EBG.EventName.EB_INITIALIZED, wait);
+	} else if ( !!document.getElementById('Stage') ) {
+		onInit();
+	} else {
+		if ( !domlistening ) {
+			document.addEventListener("DOMContentLoaded", wait);
+		  	domlistening = true;
+	  	}
+	}
+}
+
+
+function wait() { //loops back to the checkInit function until the EB object is initialized. 
+	checkInit()
+}
+
+checkInit();

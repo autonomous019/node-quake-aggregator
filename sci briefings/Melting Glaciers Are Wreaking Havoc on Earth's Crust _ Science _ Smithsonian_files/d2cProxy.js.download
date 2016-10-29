@@ -1,0 +1,1 @@
+OBR.De=OBR.De||{lk:function(c){OBR.d.u(OBR.d.f.oc,function(a){window.OB_D2C.init(a)},this,c)}};window.OB_D2C_PROXY=window.OB_D2C_PROXY||{getSet:function(c,a,d){return c.g(a,d)},getRequest:function(c,a,d){return c.h(a,d)},getWidgetId:function(c){return c.r()},makeHandshake:function(){OBR.d.v(OBR.d.f.oc)},hasJqueryInstalled:function(){return OBR.b.lf()}};OBR.d.v(OBR.d.f.pc);

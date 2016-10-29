@@ -1,0 +1,8 @@
+var xp1_auds = {
+    "ResponseCode": "28",
+    "ResponseCodeDesc": "No NodeId returned from POE model",
+    "XP_TransactionId": "02d69a9d-5d2d4d5a-26b374ca-1af86af9",
+    "GUID": "Smithsonian_GUID",
+    "XP_UID": "FH-00000000660746140",
+    "Nodes": []
+}

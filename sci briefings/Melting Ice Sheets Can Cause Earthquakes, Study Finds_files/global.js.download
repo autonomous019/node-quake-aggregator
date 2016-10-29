@@ -1,0 +1,105 @@
+
+/* =Photo Gallery Viewer
+-----------------------------------------------------------------------------*/
+/* Fixes issue where scrolling right-side of gallery-viewer wouldn't expand to
+   the full height of the photo next to it. Also positions the scroller at the
+   marked photo, which could actually be done in CSS too.
+ */
+
+	pictureSelector = new function(){ 
+	
+		//public methods
+		this.gallerySetup = gallerySetup;
+	
+		// size scrollbar to height of image
+		function gallerySetup(){		
+			if (document.getElementById("picture-selector") == null &&
+			document.getElementById("selected") == null) {		
+				return;
+			}			
+			var b = document.getElementById("picture-selector");			
+			var i = document.getElementById("primary");
+			var t = setInterval(function(){
+				if (i.height > 0){
+					clearInterval(t);
+					var iMod = i.height - 1;
+					b.style.height = iMod + "px";
+					thumbScroll(); // position div scroll
+				}
+			}, 100);				
+		}
+		
+		// position scroller at the "marked" photo
+		function thumbScroll(){
+			var b = document.getElementById("picture-selector");
+			for (var i=0;i< b.childNodes.length; i++){
+				if (b.childNodes[i].id == "selected"){
+					var c =  b.childNodes[i];
+					break;
+				}
+			}
+			b.scrollTop = c.offsetTop - 20;
+		}
+	}
+	
+
+/* =Expand More (for profile and fact box)
+-----------------------------------------------------------------------------*/
+
+// document.write('<scr' + 'ipt type="text/javascript" language="JavaScript1.2" src="http://www.nationalgeographic.com/global/js/xpander.js"><\/scr' + 'ipt>');
+// embed the xpander js file; is currently handled in XSL so we're ok
+
+if (typeof(Xpander) != "undefined") {
+
+	Xpander.Utils.addEvent(window,'load', function() {
+		
+		/* Animals Profile text */
+		if (document.getElementById("fact-text") != null && document.getElementById("profile-text") != null) {
+		// check to make sure we're on a profile page
+	
+			// Pass in height of Fastfacts box
+			var ffHeight = document.getElementById('fact-text').offsetHeight;
+			var ffHeightCompare = document.getElementById('profile-text').offsetHeight;
+	
+			// detect and fix height for IE6
+			var appVer = navigator.appVersion.toLowerCase();
+			var iePos = appVer.indexOf('msie');
+			if (iePos !=-1) {
+				is_minor = parseFloat(appVer.substring(iePos+5,appVer.indexOf(';',iePos)))
+				is_major = parseInt(is_minor);
+			}
+			var is_ie = ((iePos!=-1));
+			if ( is_ie && is_major == 6) { ffHeight = ffHeight + 12 }
+	
+			// document.getElementById('global-header-logo').innerHTML = ffHeightCompare + ":" + ffHeight;
+			if (ffHeightCompare > ffHeight) { // If fact-text box is larger than profile-text box
+				new Xpander('profile-text', ffHeight, 500, 'http://www.nationalgeographic.com/global/images/icon_collapse.gif', 'http://www.nationalgeographic.com/global/images/icon_expand.gif');
+			// these images should be pulled from VCM eventually
+			} else {
+				document.getElementById('profile-text').style.height = ffHeight;
+			}
+		}
+		
+		/* Animals wallpaper instructions */
+		if (document.getElementById("instructions") != null) {
+			new Xpander('instructions', 300, 500, 'http://www.nationalgeographic.com/global/images/icon_collapse.gif', 'http://www.nationalgeographic.com/global/images/icon_expand.gif');
+		}
+		
+	});
+
+}
+
+
+
+/* =Handler for international home links
+-----------------------------------------------------------------------------*/
+// This library finds "Home" depending on which international extension you are on.
+// Works onclick of "Home" links in the global nav    -DWF
+
+function findNGHome() {
+	if ( location.hostname.match(/\.co\.uk$/) ) { var linkdomain = "www.nationalgeographic.co.uk"; }
+	else if ( location.hostname.match(/\.co\.in$/) ) { var linkdomain = "www.nationalgeographic.co.in"; }
+	else if ( location.hostname.match(/\.au$/) ) { var linkdomain = "www.nationalgeographic.com.au"; }
+	else { var linkdomain = "www.nationalgeographic.com"; }
+	window.location.href = "http://" + (linkdomain);
+}

@@ -1,0 +1,174 @@
+<style>
+
+
+
+
+
+#hex1 {
+  width: 75px;
+  height: 75px;
+}
+
+#hex2 {
+  width: 150px;
+  height: 150px;
+}
+
+#hex3 {
+  width: 140px;
+  height: 140px;
+}
+
+#color1 {
+  background-color: #39D; 
+}
+
+#color2 {
+  background-color: #93D;
+}
+
+#color3 {
+  background-color: #D93;
+}
+
+.hexagon-wrapper {
+  text-align: center;
+  margin: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.hexagon {
+  height: 100%;
+  width: calc(100% * 0.57735);
+  display: inline-block;
+}
+
+.hexagon:before {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(60deg);
+}
+
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(-60deg);
+}
+
+
+body {
+    height: 1000px;
+    background: -webkit-linear-gradient(180deg, #000000, #774f14); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(0deg, #000000, #774f14); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(0deg, #000000, #774f14); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(0deg, #000000, #774f14); /* Standard syntax (must be last) */
+	font-family: agfaro;
+}
+.badge:before{ 
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+} 
+.badge{ 
+    position: relative; 
+    height: 200px; 
+    width: 200px; 
+    background-color: #428BCA; 
+    -webkit-transform: rotate(45deg); 
+    transform: rotate(45deg); 
+}
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 160px solid transparent;
+	border-right: 160px solid transparent;
+	border-top: 4px solid #f00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: agfaro;
+    src: url('../fonts/agfarotissansserif.ttf');
+	
+}
+
+@font-face {
+  font-family: 'agfaro';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+
+#former {
+    background-image: url("../img/badge_top.png" );
+	background-repeat: no-repeat;	
+	width: 480px;
+	height: 300px;
+	font-family: agfaro;
+	
+}
+
+#former_bottom {
+    background-image: url("../img/badge_bottom.png" );
+	background-repeat: no-repeat;	
+	width: 480px;
+	height: 40px;
+
+	
+}
+
+
+
+</style>
+<html><body>
+	
+
+	    <div id="former">lkjsdf lkjsdfl kdf <br />lkdjfldksf jsdlkfj djf<br /></div>
+		<div id="former_bottom"></div>
+	
+	<p>
+
+		<div id="arrow-down" class="arrow-down"></div>
+		
+	<P>
+			
+			
+			
+<!-- <div id="badge" class="badge"></div> -->
+			
+<!-- 
+<div id="hex3" class="hexagon-wrapper">
+    <div id="color3" class="hexagon"></div>
+	<span id="texter" style="display: inline; position: absolute; z-index: 50; margin-left: -4
+	8%; margin-top: 24%;"><h1 style="text-shadow: 6px 6px #000000; color: #fff;">MM</h1></span>
+</div>
+
+-->
+</body></html>

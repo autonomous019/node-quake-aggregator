@@ -1,0 +1,475 @@
+var AdView = Backbone.View.extend({
+    initialize: function (options) {
+        /*
+        * Ad View:
+        * Instantiates the Ad with selected options
+        */
+        // slot configuration
+        if (options.outOfPage) {
+            this.slot = googletag.defineOutOfPageSlot(GPT.path, options.id);
+        } else {
+            this.slot = googletag.defineSlot(GPT.path, options.sizes, options.id);
+        }
+        // set this.el to element
+        this.el = document.getElementById(options.id);
+        this.$el = $(this.el);
+        // set data-ad-setup attribute to determine which was have been
+        // lazy loaded already
+        this.$el.attr('data-ad-setup', 'true');
+        // pub tags
+        var pubads = googletag.pubads();
+        if (this.$el.attr('data-ad-endEvent')) {
+            pubads.addEventListener('slotRenderEnded', function(event) {
+              if (event.slot === this.slot) {
+                log.info('Slot has been rendered:', this.id , 'empty: ' + event.isEmpty);
+              }
+              if (event.slot === this.slot && !event.isEmpty) {
+                // slot has been loaded, trigger global loaded event for this slot's id
+                log.info('ads.rendered-' + this.id);
+                $(document).trigger('ads.rendered-' + this.id);
+              }
+            }.bind(this));
+        }
+        this.slot.addService(pubads);
+        if (options.collapseEmpty) {
+            // https://support.google.com/dfp_premium/answer/3072674?hl=en
+            this.slot.setCollapseEmptyDiv(true, true);
+        }
+        this.refresh = options.refresh === false ? false : true;
+        if (GPT.SFP && options.platform === 'mobile') {
+            this.slot.setTargeting("strnativekey", GPT.SFP);
+        }
+        this.slot.setTargeting('pos', options.pos);
+        if (window.xp1_auds && window.xp1_auds.Nodes) {
+            this.slot.setTargeting('demographics', window.xp1_auds.Nodes.join(','));
+        } else if (window.GPT.demographics) {
+            this.slot.setTargeting('demographics', window.GPT.demographics);
+        }
+        if (GPT.SITE) {
+            this.slot.setTargeting('site', GPT.SITE);
+        }
+        if (GPT.cats) {
+            this.slot.setTargeting('cat', GPT.cats);
+        }
+        if (GPT.tag) {
+            this.slot.setTargeting('tag', GPT.tag);
+        }
+        if (GPT.type) {
+            this.slot.setTargeting('type', GPT.type);
+        }
+        if (GPT.specials) {
+            this.slot.setTargeting('special', GPT.specials);
+        }
+        if (GPT.slug) {
+            this.slot.setTargeting('slug', GPT.slug);
+        }
+        if (GPT.contenttype) {
+            this.slot.setTargeting('contenttype', GPT.contenttype);
+        }
+        if (GPT.contest) {
+            this.slot.setTargeting('contest', GPT.contest);
+        }
+        if (GPT.camera) {
+            this.slot.setTargeting('camera', GPT.camera);
+        }
+        if (GPT.awards) {
+            this.slot.setTargeting('awards', GPT.awards);
+        }
+        return this;
+    }
+});
+
+var AdsAppView = Backbone.View.extend({
+    /*
+     * Ads App View:
+     * Manages which type of ads show be displayed (desktop or mobile)
+     * and when they should be refreshed
+     */
+
+    video: false,
+    activeAds: [],
+
+    /*
+     * when a number of user actions occur, the ads should refresh
+     * this actionCount serves as placeholder for this.
+     */
+    actionCount: 0,
+
+    settings: [{
+        name: 'desktopMain',
+        // id: 'div-gpt-ad-chuckweasley-1',
+        sizes: [[728, 90], [970, 90], [970, 250]],
+        pos: ['top'],
+        collapseEmpty: false,
+        refresh: false,
+        platform: 'desktop',
+        loading: 'instant' // options 'lazy' or 'instant'
+    }, {
+        name: 'defaultArticleStream',
+        // id: 'div-gpt-ad-chuckweasley-article-stream',
+        sizes: [[7, 7], [447, 140]],
+        pos: ['article-stream'],
+        collapseEmpty: true,
+        refresh: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        name: 'desktopSideTop',
+        // id: 'div-gpt-ad-chuckweasley-2',
+        sizes: [[300, 1050], [300, 600], [300, 250]],
+        pos: ['top'],
+        collapseEmpty: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        name: 'desktopSideHouseTop',
+        // id: 'div-gpt-ad-chuckweasley-house-top',
+        sizes: [[300, 250], [300, 200]],
+        pos: ['house-top'],
+        collapseEmpty: true,
+        refresh: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        name: 'desktopSideHouseBottom',
+        //id: 'div-gpt-ad-chuckweasley-house-bottom',
+        sizes: [[300, 250], [300, 200]],
+        pos: ['house-bottom'],
+        collapseEmpty: true,
+        refresh: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        name: 'desktopSideBottom',
+        sizes: [[300, 1050], [300, 600], [300, 250]],
+        pos: ['bottom'],
+        collapseEmpty: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        // TODO: Refactor this and mobileInArticle into a single unit
+        name: 'desktopInArticle',
+        // id: 'div-gpt-ad-chuckweasley-inarticle',
+        sizes: [[728, 90], [300, 250]],
+        pos: ['inarticle'],
+        collapseEmpty: false,
+        refresh: false,
+        platform: 'desktop',
+        loading: 'lazy'
+    }, {
+        name: 'mobileMain',
+        // id: 'div-gpt-ad-chuckweasley-mobile-1',
+        sizes: [[300, 250], [300, 50], [320, 50]],
+        pos: ['mobile-top'],
+        collapseEmpty: false,
+        platform: 'mobile',
+        loading: 'instant'
+    }, {
+        name: 'mobileSharethrough',
+        // id: 'div-gpt-ad-chuckweasley-mobile-sharethrough',
+        sizes: [[5, 5]],
+        pos: ['sharethrough'],
+        collapseEmpty: false,
+        refresh: false,
+        platform: 'mobile',
+        loading: 'instant'
+    }, {
+        name: 'mobileBottom',
+        // id: 'div-gpt-ad-chuckweasley-mobile-2',
+        sizes: [[300, 50], [320, 50]],
+        pos: ['mobile-bottom'],
+        collapseEmpty: false,
+        platform: 'mobile',
+        loading: 'instant'
+    }, {
+        // TODO: Refactor this and desktopInArticle into a single unit
+        name: 'mobileInArticle',
+        // id: 'div-gpt-ad-chuckweasley-inarticle',
+        sizes: [[300, 250]],
+        pos: ['mobile-inarticle'],
+        collapseEmpty: false,
+        platform: 'mobile',
+        loading: 'lazy'
+    }],
+
+    initialize: function(options) {
+        _.bindAll(this, 'adsViewportRefresh', 'visibilityChange', 'scrollSetup',
+            'adSlotSetup', 'getSettings');
+
+        options = options ? options : {};
+
+        this.video = options.video ? true : false;
+
+        // list of ads to disable. (ads are all enabled by default)
+        this.disableAd = options.disableAd ? options.disableAd : null;
+
+        /*
+         * Override default ad attributes
+         * When instantiating AdsAppView, optional values for each ad can
+         * be defined as in the following example:
+         *
+         *
+         *   new AdsAppView({
+         *       ads: [{
+         *           name: 'desktopSideTop',
+         *           attrs: {
+         *               id: 'my-custom-id',
+         *               sizes: [[300, 600], [300, 250]]
+         *           }
+         *       }, {
+         *           name: 'mobileTop',
+         *           attrs: {
+         *               id: 'my-mobile-custom-id',
+         *               sizes: [[300, 400], [300, 250]]
+         *           }
+         *       }]
+         *   });
+         *
+         */
+
+        _.each(options.ads, function(obj, key) {
+            var settings = this.getSettings(obj.name);
+            if (settings) {
+                _.extend(settings, obj.attrs);
+            }
+        }, this);
+
+        this.setup();
+
+        // refresh ads on slideshow change
+        $(document).on('slideshow:change', this.adsViewportRefresh);
+        // refresh on essay change
+        $(document).on('essay:change', this.adsViewportRefresh);
+        // on orientation change >> reset the ads
+        // window.addEventListener("orientationchange", this.adReset);
+
+        // refresh ads every 30s
+        this.setupRefresh();
+
+        // add only one event listener or else we may run into duplicate
+        // events on prefixed browsers that didn't deprecate the prefixed API
+        if (document.visibilityState) {
+            document.addEventListener('visibilitychange', this.visibilityChange);
+        } else if (document.webkitVisibilityState) {
+            document.addEventListener('webkitvisibilitychange', this.visibilityChange);
+        } else if (document.mozVisibilityState) {
+            document.addEventListener('mozvisibilitychange', this.visibilityChange);
+        } else if (document.msVisibilityState) {
+            document.addEventListener('msvisibilitychange', this.visibilityChange);
+        }
+
+        // initial setup
+        this.scrollSetup();
+
+        // debounce the scroll callback so we dont' setup the same ads
+        // multiple times
+        this.debouncedScroll = _.debounce(this.scrollSetup, 50);
+
+        // call scrollSetup on scroll, but debounce
+        $(window).on('scroll', this.debouncedScroll);
+    },
+
+    getSettings: function(settingsName) {
+        return _.find(this.settings, function(item) {
+            return settingsName === item.name;
+        });
+    },
+
+    setup: function() {
+        /*
+         * Setup and instantiate ads
+         * We need to reference 'this' (AdsAppView instance)
+         * to get the ad settings, but we can't override 'this' within
+         * the googletag.
+         */
+        var that = this;
+
+        googletag.cmd.push(function() {
+            // video ads
+            if (that.video) {
+                googletag.companionAds().setRefreshUnfilledSlots(true);
+            }
+            // set targeting site
+            googletag.pubads().setTargeting("Site", [window.GPT_SITE]);
+            // if lat and lng exist, publish geo targeted ads
+            if (that.lat && that.lng) {
+                googletag.pubads().setLocation(latitude, longitude);
+            }
+            googletag.enableServices();
+        });
+    },
+
+    scrollSetup: function() {
+        log.info('scrollSetup');
+        // check for ad spots that need to be activated based on the scroll location
+        // run every time the user scrolls
+        // filters ads based on rules and determines if it should be setup or not
+        var that = this;
+        var $ads = $('.ad-slot:not([data-ad-setup=true])');
+
+        var $filteredAds = $ads.filter(function(key, node) {
+            // filter ads to check if there's any ad that will be setup
+            // filtered ads will be a list of the ads that will be setup
+            //
+            // get the node
+            var $node = $(node);
+            // info for slot setup
+            var slotId = $node.attr('id');
+            var adSettings = $node.data('ad-settings');
+
+            // AD CONFIGURATION VALIDATION
+            // check if slot is configured to use ad settings
+            if (!adSettings || (that.disableAd && that.disableAd.indexOf(adSettings) !== -1)) {
+                return false;
+            }
+
+            // AD SETTINGS
+            var settings = _.extend({
+                id: slotId
+            }, that.getSettings(adSettings));
+
+            // AD PLATFORM
+            if (settings.platform === 'mobile' && window.innerWidth > 800) {
+                // if platform mobile, but window width is desktop
+                // do nothing
+                log.warn('Ad mobile only, but desktop window:', slotId);
+                return false;
+            } else if (settings.platform === 'desktop' && window.innerWidth < 801) {
+                // if platform desktop, but window width is mobile
+                // do nothing
+                log.warn('Ad desktop only, but mobile window:', slotId);
+                return false;
+            }
+
+            // check if slot is not instantly loading and not in the viewport
+            // if both conditions are true, do nothing
+            if (settings.loading !== 'instant' && !that.inViewport($node.parent())) {
+                return false;
+            }
+
+            return true;
+        });
+
+        if (!$ads.length) {
+            $(window).off('scroll', this.debouncedScroll);
+            return;
+        } else if ($filteredAds.length) {
+            log.info('AdsAppView.scrollSetup', $filteredAds.length);
+            googletag.cmd.push(function() {
+                $filteredAds.each(that.adSlotSetup);
+            });
+        }
+    },
+
+    adSlotSetup: function(key, node) {
+        // setups up a whole ad slot
+        var $node = $(node);
+        // info for slot setup
+        var slotId = $node.attr('id');
+        var adSettings = $node.data('ad-settings');
+
+        // AD CONFIGURATION VALIDATION
+        // check if slot is configured to use ad settings
+        if (!adSettings) {
+            return false;
+        }
+
+        // AD SETTINGS
+        var settings = _.extend({
+            id: slotId
+        }, this.getSettings(adSettings));
+
+        // AD INITIALIZATION
+        // use id from the DOM node id
+        // extend with settings defined in data-ad-settings
+        // instantiate ad with these settings
+        var ad = new AdView(settings);
+        log.info('Ad successful setup: ', ad.id);
+        // push ad to list of active ads
+        this.activeAds.push(ad);
+
+        // call googletag.display to display the ad slot
+        googletag.display(ad.id);
+
+        // refresh the slot and show the ad
+        //log.info('ad slot refresh', ad.id);
+        //googletag.pubads().refresh([ad.slot]);
+
+        // Trigger an event stating that the ad was finished setting up.
+        // This is used on TweenTribune to determine if there is an
+        // interstitial to show.
+        $(document).trigger('ads.setup-' + ad.id, ad);
+    },
+
+    setupRefresh: function() {
+        // refresh ads every 30s (30000ms)
+        this.refreshId = window.setInterval(this.adsViewportRefresh, 30000);
+    },
+
+    getVisibilityState: function() {
+        // get visibility state for all implementations (including prefixed browsers)
+        return document.visibilityState || document.webkitVisibilityState || document.mozVisibilityState || document.msVisibilityState;
+    },
+
+    visibilityChange: function() {
+        // when page visibile changes (ie, user changes tabs)
+        // disable or enable the ads auto-refresh accordingly
+        log.debug('visibilityChange', document.visibilityState);
+        if (this.getVisibilityState() === 'visible' && !this.refreshId) {
+            // restart the refresh interval
+            this.setupRefresh();
+        } else if (this.getVisibilityState() === 'hidden' && this.refreshId) {
+            // clear the refresh and assign `undefined` to the variable holding the id
+            this.refreshId = window.clearInterval(this.refreshId);
+
+        }
+    },
+
+    getSlots: function (ads) {
+        // return the list of slots (for refreshing purposes)
+        // from a list of ads
+        var slots = [];
+        // if an ads list is passed, use that
+        // else use all ads in this.activeAds
+        _.each(ads ? ads : this.activeAds, function (obj, key) {
+            // if slot can be refreshed
+            if (obj.refresh) {
+                slots.push(obj.slot);
+            }
+        }, this);
+        return slots;
+    },
+
+    inViewport: function(elem) {
+        log.info('inViewport', elem);
+        // check if an element is in the viewport
+        var $elem = $(elem);
+        var offset = $elem.offset();
+        var pos = {
+            offsetTop: offset ? offset.top : 0,
+            height: $elem.height()
+        }
+        var scrollY = $(window).scrollTop();
+        // check if a little over 50% of the ad is within the viewport
+        var isInViewport = pos.offsetTop >= (scrollY - pos.height/2.25) && pos.offsetTop < (scrollY + window.innerHeight - pos.height/2.25);
+        return isInViewport;
+    },
+
+    adsViewportRefresh: function() {
+        log.info('adsViewportRefresh');
+        var self = this;
+        // Refresh all ads between:
+        // start: window.scrollY
+        // end: window.scrollY + window.innerHeight
+        var ads = _.filter(this.activeAds, function(obj, key) {
+            return self.inViewport(obj.el) && obj.refresh;
+        });
+
+        // get the slot list from the ad list
+        var slots = this.getSlots(ads);
+        // trigger ads refresh
+        if (googletag.pubads && slots.length) {
+            googletag.pubads().refresh(slots);
+        }
+    }
+});

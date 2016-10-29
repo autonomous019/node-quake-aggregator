@@ -1,0 +1,123 @@
+/* --------------------------------------------------------------------
+NAME: newsletterFunctions.js
+DESC: Includes variables and functions used site-side to render layout.
+-------------------------------------------------------------------- */
+
+function $() {
+	var elements = new Array();
+	for (var i = 0; i < arguments.length; i++) {
+		var element = arguments[i];
+		if (typeof element == 'string') {
+			if (document.getElementById) {
+				element = document.getElementById(element);
+			} else if (document.all) {
+				element = document.all[element];
+			}
+		}
+		elements.push(element);
+	}
+
+	if (arguments.length == 1 && elements.length > 0) {
+		return elements[0];
+	} else {
+		return elements;
+	}
+}
+
+function isblank(s){
+	for(var i = 0; i < s.length; i++){
+		var c = s.charAt(i);
+		if ((c != ' ') && (c != '\n') && (c != '\t')) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function isEmailAddr(email){
+	var result = false
+	var theStr = new String(email)
+	var index = theStr.indexOf("@");
+	if (index > 0) {
+    	var pindex = theStr.indexOf(".",index);
+		if ((pindex > index+1) && (theStr.length > pindex+1)){
+			var sindex = theStr.indexOf(" ");
+			if (sindex == -1){
+				result = true;
+			}
+		}
+	}
+	return result;
+}
+
+function validateEmail(email_addr){
+	var msg1 = "Please enter your email address.\n";
+	var msg2 = "Please enter valid email address.\n";
+	if ((email_addr == null) || (email_addr == "") || isblank(email_addr)){
+		$("errorMsg").style.display = 'block';
+		return false;
+	}
+	if (isEmailAddr(email_addr) == false){
+		$("errorMsg").style.display = 'block';
+		return false;
+	}
+	return true;
+}
+
+function handleEmailFormSubmit(){
+	var emailAddr = $("email").value;
+	if (validateEmail(emailAddr)){
+
+		var emailScript = "http://www.nationalgeographic.com/global/cgi-bin/epsilon.pl?ntag=news&plist_name=NG_Master_List&REFERRING_SITE=nationalgeographicnews&campaign_name=Data_Collection&action_type=Upload&upload_type=merge_replace&check_email_addr=Y";
+		emailScript += "&email_addr="+emailAddr+"&profile_key="+emailAddr;       //add params for email
+		$("hidden").src = emailScript;
+		$("errorMsg").style.display = 'none';
+		$("emailEntry").style.display = 'none';
+		$("confirmMsg").style.display = 'block';
+		$("email").value = "";
+	}
+	return false;
+}
+
+function handleEmailInputFocus(){
+	if ($("email").value == "Enter Your Email Address"){
+		$("email").value = "";
+	}
+}
+
+function validateEmailRR(email_addr){
+	var msg1 = "Please enter your email address.\n";
+	var msg2 = "Please enter valid email address.\n";
+	if ((email_addr == null) || (email_addr == "") || isblank(email_addr)){
+		$("errorMsgRR").style.display = 'block';
+		return false;
+	}
+	if (isEmailAddr(email_addr) == false){
+		$("errorMsgRR").style.display = 'block';
+		return false;
+	}
+	return true;
+}
+
+function handleEmailFormSubmitRR(){
+	var emailAddr = $("emailRR").value;
+	if (validateEmailRR(emailAddr)){
+
+		var emailScript = "http://www.nationalgeographic.com/global/cgi-bin/epsilon.pl?ntag=news&plist_name=NG_Master_List&REFERRING_SITE=nationalgeographicnews&campaign_name=Data_Collection&action_type=Upload&upload_type=merge_replace&check_email_addr=Y";
+		emailScript += "&email_addr="+emailAddr+"&profile_key="+emailAddr;       //add params for email
+		$("hiddenRR").src = emailScript;
+		$("errorMsgRR").style.display = 'none';
+		$("emailEntryRR").style.display = 'none';
+		$("confirmMsgRR").style.display = 'block';
+		$("emailRR").value = "";
+	}
+	return false;
+}
+
+function handleEmailInputFocusRR(){
+	if ($("emailRR").value == "Enter Your Email Address"){
+		$("emailRR").value = "";
+	}
+}
+
+

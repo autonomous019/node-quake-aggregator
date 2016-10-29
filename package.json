@@ -1,0 +1,30 @@
+{
+  "name": "node-quake",
+  "subdomain": "node-quake",
+  "domains": [
+    "node-quake.info",
+    "www.node-quake.info"
+  ],
+  "description": "Real-time and Historical Earthquake information",
+  "version": "0.0.1-1",
+  "scripts": {
+    "predeploy": "echo starting deployment",
+    "postdeploy": "echo deployment completed",
+    "test": "node_modules/.bin/mocha -w",
+    "start": "web.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "*",
+    "hbs": "*",
+    "leaflet": "~1.0.1",
+    "mongodb": "^2.2.10"
+  },
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
+  "devDependencies": {
+    "should": "~2.1.0"
+  }
+}

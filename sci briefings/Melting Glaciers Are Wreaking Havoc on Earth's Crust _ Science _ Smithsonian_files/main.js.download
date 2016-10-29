@@ -1,0 +1,294 @@
+/*
+* By default, jQuery 1.4+ uses recursive serialization, which Django does
+* not support. Disable this feature.
+*/
+$.ajaxSettings.traditional = true;
+
+/* ------------------------------------------------------------------------
+ * Search autocomplete / typeahead
+ * --------------------------------------------------------------------- */
+if ($('.with-suggest input#id_q').length > 0) {
+    var selected_facets = $('.search-form input[name=selected_facets]'),
+        content_type = $('.search-form input[name=content_type]'),
+        from_date = $('.search-form input[name=from]'),
+        to_date = $('.search-form input[name=to]'),
+        url = $('.search-form').attr('data-suggest-url') + '?q=%QUERY';
+
+    if (selected_facets.val()) {
+        url += '&selected_facets=' + encodeURIComponent(selected_facets.val());
+    }
+    if (content_type.val()) {
+        url += '&content_type=' + content_type.val();
+    }
+    if (from_date.val() && to_date.val()) {
+        url += '&from=' + from_date.val() + '&to=' + to_date.val();
+    }
+
+    $('input#id_q').typeahead([{
+        name: 'search',
+        remote: url
+    }]);
+}
+
+/* ------------------------------------------------------------------------
+ * Accessible Tabs
+ * --------------------------------------------------------------------- */
+$('.tab').on('click', function(event) {
+    event.preventDefault();
+
+    var tab = $(this);
+    var container = tab.parents('.tab-container').eq(0);
+    var pane = tab.attr('href');
+
+    // Change the highlight of the tabs
+    container.find('.tab').removeClass('active');
+    tab.addClass('active');
+
+    container.find('.pane').removeClass('visuallyshown').addClass('visuallyhidden');
+    container.find(pane).removeClass('visuallyhidden');
+
+    $(document).trigger('tab:change', {
+        'pane': pane
+    });
+});
+
+
+/* ------------------------------------------------------------------------
+ * Select Nav Changer
+ * --------------------------------------------------------------------- */
+$('.select-nav').bind('change', function () {
+    var url = $(this).val();
+    if (url) {
+        window.location = url;
+    }
+    return false;
+});
+
+/* ------------------------------------------------------------------------
+ * Clear the Sidebar
+ * --------------------------------------------------------------------- */
+function sizeMain () {
+    var sidebarHeight = 0;
+    var sidebar = $('.sidebar');
+    var targets = '.signup-wrapper, .post-main';
+
+    $('.sidebar > *').each(
+        function() { 
+            var $elem = $(this);
+            if ($elem.css('position') === 'absolute') {
+                sidebarHeight += $elem.outerHeight();
+            }
+        }
+    );
+    if (sidebar.overlaps(targets)) {
+        $('.main').css('min-height', sidebarHeight);
+    }
+}
+
+function getURLParameter(name, flags) {
+    flags = flags || ''
+    var val = (new RegExp('[?|&]' + name + '(=([^&;]+?))?(&|#|;|$)', flags).exec(location.search)||[,,""])[2]
+    if (val === void 0){  // equivalent to _.isUndefined(val)
+        return true;
+    }
+    return decodeURIComponent(val.replace(/\+/g, '%20'))||null
+}
+
+function setInterstatial () {
+    var ist = getURLParameter('no-ist', 'i');
+    if ( ist ){
+        var d = new Date();
+        d.setTime(d.getTime()+(24*60*60*1000));
+        var expires = "expires="+d.toGMTString();
+        document.cookie = "has_seen_interstatial=skip;"+expires
+    }
+}
+
+$(document).ready(function () {
+    sizeMain();
+    setInterstatial();
+    // We run this 3 seconds after the page loads
+    // in order to give ads time to load.
+    // We do this because we have no event to hook to.
+    //
+    setTimeout(sizeMain, 3000);
+});
+
+$(window).scroll(sizeMain);
+
+/* ------------------------------------------------------------------------
+ * Initialize the Suzy off canvas toggle
+ * --------------------------------------------------------------------- */
+new OffCanvasToggle($('.toggle'));
+
+/* -----------------------------------------------------------------------------------
+ * Placeholder text for IE 8-9 on Journeys search form for Smithsonian Magazine site
+ * -------------------------------------------------------------------------------- */
+ $("#ie-search-label").click(function() {
+    $(this).hide();
+ });
+
+ /* -----------------------------------------------------------------------------------
+  * Resize article overview thumbnail image for IE
+  * -------------------------------------------------------------------------------- */
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+  if (msie > 0) {
+      if ($(window).width() > 815) {
+          $(".IE-article-overview-thumbnail-hide").remove();
+      }
+  }
+
+/* -----------------------------------------------------------------------------------
+* Header Search
+* -------------------------------------------------------------------------------- */
+  function navSearchURL() {
+      var searchInputValue = $('#nav-search').val();
+      location.href = 'http://' + window.location.hostname + '/search/?q=' + searchInputValue;
+      event.preventDefault();
+  }
+
+  $('#nav-search').keypress(function(e) {
+      if (e.which == 13) {
+          setTimeout(function() {
+              $('.search-trigger').click();
+          },0);
+          event.preventDefault();
+          return false;
+      }
+  });
+
+/* -----------------------------------------------------------------------------------
+* Mobile Search
+* -------------------------------------------------------------------------------- */
+//Slide up or down search box
+var $x = 0;
+
+$(".mobile-search-icon, .mobile-search-close").click(function() {
+    if ($x % 2 === 0) {
+        $(this).css({'opacity': 0, 'z-index': 1});
+        $(".mobile-search-close").animate({'opacity': 1, 'z-index': 2});
+        $("#mobile-search").animate({
+            'z-index'           : '9999'
+        }, {queue: false, duration: 140});
+        $("#mobile-search").animate({
+            'opacity'           : 1,
+            'top'               : '43px'
+        }, 300, 'easeOutCirc'), $x++;
+    } else {
+        $(this).css({'opacity': 0, 'z-index': 1});
+        $(".mobile-search-icon").animate({'opacity': 1, 'z-index': 2});
+        $("#mobile-search").animate({
+            'z-index'           : '-1'
+        }, 100);
+        $("#mobile-search").animate({
+            'opacity'           : 0,
+            'top'               : '0px'
+        }, 500, 'easeOutQuint'), $x++;
+    }
+});
+
+//Append search to URL on search button click
+function mobileSearchURL() {
+    var searchInputValue = $('#id_q').val();
+    location.href = 'http://' + window.location.hostname + '/search/?q=' + searchInputValue;
+    event.preventDefault();
+}
+
+//Remove mobile search icon on search page
+if (document.location.href.indexOf('smithsonianmag.com/search/') > -1) {
+   $('.mobile-search-icon').hide();
+}
+
+/* -----------------------------------------------------------------------------------
+* Photo Contest Select Wraps
+* -------------------------------------------------------------------------------- */
+
+$(".customSelect").eq(1).addClass('photo-upload-month-one');
+$(".customSelect").eq(2).addClass('photo-upload-month-two');
+$('#id_date_taken_0, .photo-upload-month-one').wrapAll('<div class="select-wrap" />');
+$('#id_date_taken_1, .photo-upload-month-two').wrapAll('<div class="select-wrap" />');
+
+/* -----------------------------------------------------------------------------------
+  * Photo contest sidebar styles
+  * -------------------------------------------------------------------------------- */
+if (window.location.href.indexOf('dashboard') > -1) {
+    $('.sidebar').css({
+        'min-height': '1200px',
+        'max-height': '3500px',
+        'overflow': 'hidden',
+        'position': 'absolute',
+        'top': 0,
+        'bottom': 0
+    });
+    $('.container').css({'min-height': '1200px'});
+}
+
+/* ------------------------------------------------------------------------
+ * Fix slideshows overlapping associated content
+ * --------------------------------------------------------------------- */
+function handleACOverlap() {
+  var elems = $('.article-body > .slideshow-wrapper'),
+      overlapElems = elems.overlaps('.associated-container > *');
+  if (overlapElems.length > 0) {
+    elems.addClass('is-overlap');
+  } else {
+    elems.removeClass('is-overlap');
+  }
+}
+
+// Set things up for articles only
+if ($('body.article')) {
+  handleACOverlap();
+  $(window).on('resize', handleACOverlap);
+}
+
+$(document).ready(function() {
+  /* ------------------------------------------------------------------------
+  * Custom Selects
+  * --------------------------------------------------------------------- */
+
+  // Make sure everything is loaded first so this always works
+  $('select:visible').customSelect();
+})
+
+/* -----------------------------------------------------------------------
+* Photo Contest Mobile Menu
+* --------------------------------------------------------------------- */
+$('.photo-contest-header .fa-bars').click(function() {
+  $('.photo-contest-mobile-menu').animate({'left': 0});
+});
+$('.photo-contest-mobile-menu .fa-times').click(function() {
+  $('.photo-contest-mobile-menu').animate({'left': '-1000px'});
+});
+
+/* -----------------------------------------------------------------------
+* Photo Contest Map Overlay
+* --------------------------------------------------------------------- */
+$('.map-overlay-text').click(function() {
+  $('.map-overlay').fadeOut(1000);
+}); 
+
+/* -----------------------------------------------------------------------
+* Hide footer for 24 hours on x click 
+* --------------------------------------------------------------------- */
+// Current time
+var date = new Date();
+// Set expiration time in minutes
+var minutes = 1440;
+date.setTime(date.getTime() + (minutes * 60 * 1000));
+
+$(document).ready(function() {
+  // Don't display footer on mobile
+  if ($.cookie('no_footer') == null && $(window).width() > 815) {
+    $('#fixed-footer-wrapper').show();
+  }
+
+  // Set user cookie
+  $('#fixed-footer .fa-times').click(function() {
+    $('#fixed-footer-wrapper').animate({'bottom': '-300px'}, 1200);
+    $.cookie("no_footer", "true", { expires: date });
+  });
+});
+
+

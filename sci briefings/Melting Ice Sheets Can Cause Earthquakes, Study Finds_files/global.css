@@ -1,0 +1,1634 @@
+/*
+	National Geographic Global Style Sheet
+	version: 0.6
+	This is the global css for nationalgeographic.com.
+	It contains base defaults, such as color schemes and typography rules.
+	Please fewer comments in here and add more comments to the wiki.
+*/
+
+
+/* =General
+-----------------------------------------------------------------------------*/
+
+body, form, h1, h2, h3, h4, h5, h6, p { margin: 0px; padding: 0px; }
+
+/* Designates the color of the images with border="1" */
+img, img a, a img { border-color: #333333; color: #333333; }
+
+.dash-grey	{ height: 3px; width: 95%; border-bottom: dashed 1px #e5e4e1; }
+.dash-white	{ height: 3px; width: 95%; border-bottom: dashed 1px #dbdbdb; }
+
+/* For clearing floats */
+.clear { clear: both; }
+
+
+/* =Typography
+-----------------------------------------------------------------------------*/
+
+body {
+	font-family: arial, helvetica, clean, sans-serif;
+	font-size: 12px;
+	*font-size: small; *font: x-small; /* IE */
+}
+
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+p { /* doesn't work because too many promos use p tags 
+	margin-top: 0px; */
+	line-height: 1.3em;
+}
+
+/* 99% for safari; 100% is too large */
+select, input, textarea { font: 99% arial, helvetica, clean, sans-serif; }
+
+/* Bump up !IE to get to 13px equivalent */
+pre, code { font: 115% monospace; *font-size: 100%; }
+
+
+
+/* =Links
+-----------------------------------------------------------------------------*/
+
+a:link, a:visited { color: #044e8e; text-decoration: none; }
+a:active { color: #000000; }
+a:hover { text-decoration: underline; }
+p a { text-decoration: underline; }
+
+
+/* =Debug
+-----------------------------------------------------------------------------*/
+.debug { border: 1px solid red; }
+
+
+/* =Ads
+-----------------------------------------------------------------------------*/
+.advertisement {
+	margin-bottom: 16px;
+}
+
+.advertisement .ad-text {
+	font-size: 10px;
+	color: #ccc;
+	text-transform: uppercase;
+}
+
+
+/* =Global Site Layout
+-----------------------------------------------------------------------------*/
+
+body {
+	color: #000;
+	background-color: #fff;
+	text-align: center; 
+}
+
+#page-container {
+	width: 980px;
+	text-align: left; 
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+/* =Content Area
+-----------------------------------------------------------------------------*/
+/* The full inner region within the global frame (from Main Header down to Main Footer) */
+#content-container, #content-container-home {
+	padding-left: 18px;
+	padding-right: 14px;
+	background: #fff url('/news/ax/redesign_2007/bg_content_container_default.gif') no-repeat top left;
+}
+
+
+/* =MODULES
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------*/
+
+
+/* =Promo Collection - General Settings
+-----------------------------------------------------------------------------*/
+.collection,
+#a-z-directory,
+#dynamic-lead,
+.advertisement,
+#category-gallery-list,
+#gallery-viewer,
+.image-viewer,
+#more-galleries,
+#article,
+.image-enlarge,
+#image-wallpaper,
+.category-overview,
+.map, 
+.collection .clear {
+	margin-bottom: 22px;
+	width: 100%;
+}
+
+.collection .header, .collection .footer {
+	padding-left: 15px;
+	padding-right: 20px;
+	vertical-align: top;
+}
+
+#content-center-well .collection .body {
+	padding-left: 15px;
+	padding-right: 20px;
+	padding-top: 12px;
+}
+
+#content-right-rail .collection .body { /*collection in chrome */
+	padding-left: 14px;
+	padding-top: 5px;
+	padding-right: 14px;
+}
+
+#content-right-rail .right-rail .body { /* collection not in chrome */
+	padding-left: 0px;
+	padding-top: 5px;
+	padding-right: 0px;
+}
+
+.collection h2 {
+	font-size: 17px;
+	color: #fff;
+	padding-top: 4px;
+}
+
+.feature .promo h3 {
+	font-size: 14px;
+}
+
+.promo p {
+	color: #333;
+	margin-bottom: 4px;
+}
+
+.promo .thumb img {
+	margin-top: 3px;
+	border: 1px solid;
+	margin-right: 16px;	/* width: 150px;
+	height: 100px; */
+}
+
+.gallery .promo .thumb img {
+	margin-right: 0px;
+}
+
+#content-right-rail .promo .thumb img {
+	margin-top: 2px;
+	margin-right: 10px;
+}
+
+
+#content-center-well .feature .promo {
+	padding-right: 40px;
+	padding-bottom: 15px;
+	border-bottom: 1px dashed #dbdbdb;
+	margin-bottom: 15px;
+}
+
+#content-center-well .feature .promo-last {
+	border-bottom: 0;
+	margin-bottom: 0px;
+}
+
+.collection .more {
+	clear: both;
+	font-weight: bold;
+	padding-top: 10px;
+	font-size: 11px;
+}
+
+
+
+
+
+
+/* =Main Header (Subnav)
+-----------------------------------------------------------------------------*/
+#main-header {
+	border-bottom: 1px solid #adbbac;
+	padding-bottom: 3px;
+	margin: 11px 0px 6px 0px;
+}
+
+#main-header h1 {
+	color: #000000;
+	font-size: 30px;
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+
+#main-header h2 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+
+/* unique items to the homepage */
+#content-container-home #main-header h2 {
+	font-size: 38px;
+	margin-top: 6px;
+	font-weight: 400;
+}
+
+#content-container-home #main-header .inside-nav-container {
+	padding-bottom: 6px;
+	clear: both;
+}
+
+
+#main-header h2 a:link,
+#main-header h2 a:visited,
+#main-header h2 a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+#main-header .menu-item {
+	font-size: 11px;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding-top: 0px;
+	margin-right: 20px;
+	float: left;
+	display: block;
+}
+
+#content-container-home #main-header .menu-item {
+	font-size: 13px;
+}
+
+#main-header .selected a {
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #000;
+}
+
+
+
+/* =Content Title (Page Title)
+-----------------------------------------------------------------------------*/
+#content-title {
+	width: 100%;
+	color: #000000;
+}
+
+#content-title h1 {
+	color: #000000;
+	font-size: 30px;
+	font-weight: 400;
+	padding: 5px 14px 10px 0px;
+	float: left;
+	vertical-align: bottom;
+}
+
+#content-title .sponsor, #main-header .sponsor {
+	float: right;
+	padding-left: 10px;
+	padding-bottom: 5px;
+}
+
+
+ 
+
+/* =Content Section
+-----------------------------------------------------------------------------*/
+#content-top {
+	margin: 0px 10px 14px 20px;
+}
+
+
+
+/* =Main Footer
+-----------------------------------------------------------------------------*/
+#main-footer {
+	background-color: #ffffff;
+	width: 100%;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	margin-left: 0px;
+	margin-top: 20px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+}
+
+#main-footer .menu-item {
+	display: inline;
+	margin-right: 20px;
+}
+
+
+
+/* =Footer
+-----------------------------------------------------------------------------*/
+#global-footer {
+	font-size: 13px;
+	text-align: center;
+	color: #666;
+	width: 98%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-top: 1px dashed #dbdbdb;
+}
+
+#global-footer .level1 {
+	margin-top: 25px;
+}
+
+#global-footer .level2 {
+	margin-top: 15px;
+}
+
+#global-footer .level3 {
+	margin-top: 30px;
+}
+
+#global-footer .copy {
+	margin-top: 15px;
+}
+
+
+
+
+/* =List Container. This is a replacement for ULs
+-----------------------------------------------------------------------------*/
+.list-container {
+}
+
+.list-container .menu-item {
+	font-weight: normal;
+	padding: 0px 10px 6px;
+	background: url(/staticfiles/NGS/Global/ApplicationAssets/img/art-bullet-000000.gif) no-repeat 0px 5px;
+	line-height: 15px;
+}
+
+
+/* =A-Z Directory
+-----------------------------------------------------------------------------*/
+#a-z-directory {
+	/* margin-top: 1px; */ 
+}
+
+
+
+/* =Article
+-----------------------------------------------------------------------------*/
+#article p, ul, li {
+	line-height: 16px;
+	margin-bottom: 12px;
+}
+
+#article ul {
+	margin-left: 15px;
+	padding-left: 0;	
+}
+	
+ol li {
+	margin-bottom: 6px;
+	line-height: 1.3em;
+}
+
+#article .lead {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+#article .promo {
+	border-bottom: 1px solid #999999;
+	padding-bottom: 10px;
+}
+
+#content-center-well #article .caption {
+	text-align: right;
+}
+
+
+#content-center-well #article .inline-container .caption {
+	line-height: 14px;
+	text-align: left;
+}
+
+#article .enlarge {
+	text-align: right;
+	vertical-align: top;
+}
+
+#article .credit {
+	text-align: right;
+	margin-bottom: 15px;
+}
+
+/* Inline image in articles */
+#article .inline-container {
+	float: left;
+	clear: both;
+	overflow: visible;
+	width: 130px;
+	margin-bottom: 15px;
+	margin-right: 30px;
+}
+
+#article .inline-container .promo img {
+	border-width: 1px;
+}
+
+#article .inline-container .promo .enlarge img {
+	border-width: 0px;
+	margin-top: 2px;
+	margin-left: 5px;
+}
+
+#article .inline-container .promo .thumb img {
+	border-width: 0px;
+}
+
+.inline-promo {
+	margin-top: 10px;
+	text-align: left;
+}
+
+.inline-promo .header {
+	padding-top: 6px;
+	padding-bottom: 4px;
+}
+
+.inline-promo .header a:link,
+.inline-promo .header a:visited,
+.inline-promo .header a:hover,
+.inline-promo .header a:active {
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+}
+
+.inline-promo .inline-from-text {
+	font-size: 10px;
+	color: #a5a5a5;
+	text-align: left;
+}
+
+.inline-promo .body {
+	margin: 0;
+}
+
+.inline-promo .body p {
+	padding-right: 13px;
+}
+
+.inline-promo .promo h3 {
+	display: none; 
+}
+#article {
+	margin-bottom: 30px;
+}
+
+#article .inline-container .promo table {
+	width: 100%;
+	text-align: left;
+}
+#article .inline-container .promo {
+	text-align: center;
+}
+
+.map-key span {
+	display: inline;
+	height: 50px;
+	width: 50px;
+}
+
+
+/* =Profile
+-----------------------------------------------------------------------------*/
+
+.profile-text {
+	margin-bottom: 12px;
+}
+
+.profile-text p {
+	line-height: 16px;
+	margin-bottom: 12px;
+}
+
+
+
+
+/* =Image Enlarge
+-----------------------------------------------------------------------------*/
+.image-enlarge {
+	margin-bottom: 14px;
+}
+
+.image-enlarge .image {
+	margin-bottom: 14px;
+}
+
+.image-enlarge .overlay {
+	border: 1px solid #262626;
+}
+
+.image-enlarge .footer {
+	height: 26px;
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg-photo-footer.gif') #000000 repeat-x;
+}
+
+.caption {
+	line-height: 16px;
+	padding-bottom: 6px;
+}
+
+.credit {
+	color: #666666;
+	font-size: 11px;
+	font-style: italic;
+}
+
+
+/* =Image Wallpaper
+-----------------------------------------------------------------------------*/
+.image-wallpaper {
+	margin-bottom: 14px;
+}
+
+.image-wallpaper .left-side {
+	width: 152px;
+}
+
+.image-wallpaper .left-side .img-footer {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg-photo-footer.gif') #000000 repeat-x;
+}
+
+.image-wallpaper .right-side {
+	padding-left: 10px;
+}
+
+.image-wallpaper .right-side .sm-wallpaper-link {
+	margin-top: 8px;
+	width: 400px; /* hack: fixes alignment in IE */
+
+}
+
+.image-wallpaper .right-side .lg-wallpaper-link {
+	margin-top: 4px;
+}
+
+.image-wallpaper .caption {
+	margin-top: 14px;
+}
+
+.image-wallpaper .credit {
+	color: #666666;
+}
+
+
+
+
+/* =Image Download Instructions
+-----------------------------------------------------------------------------*/
+
+/* note: this should be ID not class so the expander JS can attach to it. keeping both in for now until the change is made. */
+
+.download-instructions {
+	margin: 14px 100px 20px 12px;
+}
+
+.download-instructions ol {
+	margin: 0px;
+	padding: 10px 0px 0px 35px;
+}
+
+.download-instructions .XpanderContainer { text-align: left; }
+
+
+
+/* =Image Viewer 
+-----------------------------------------------------------------------------*/
+.image-viewer table {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.image-viewer, .image-viewer td {
+	text-align: left;
+}
+
+.image-viewer .footer {
+	background: #000 url(/staticfiles/NGS/Global/ApplicationAssets/img/image-footer-background.gif) repeat-x;
+}
+
+.image-viewer .caption, .image-viewer .credit {
+	margin-top: 5px;
+}
+
+.image-viewer .body {
+	text-align: center;
+	background-color: #000;
+}
+
+.image-viewer .body img {
+	border: 1px solid #000;
+}
+
+
+
+/* =Gallery Viewer (sized for skygrid layout)
+-----------------------------------------------------------------------------*/
+.gallery-viewer {
+	margin-bottom: 20px;
+	text-align: left;
+	background-color: #000; /* we have to apply it to the whole area to show up behind the flash grr */
+}
+
+.gallery-viewer .prev-next {
+	text-align: right;
+	padding-bottom: 3px;
+	font-weight: bold;
+	background-color: #fff;
+}
+
+.gallery-viewer .prev-next .previous {
+	padding-right: 13px;
+}
+
+.gallery-viewer .prev-next .next {
+	padding-left: 10px;
+}
+
+.gallery-viewer .left-side {
+	text-align: center;
+	width: 470px;
+}
+
+.gallery-viewer .right-side {
+	background: url(/staticfiles/animals/images/global/bg_gallery_selector_shadow_left.gif) repeat-y;
+	width: 105px;
+	text-align: right;
+}
+
+.gallery-viewer .footer {
+	height: 26px;
+	background: #000 url(/staticfiles/NGS/Global/ApplicationAssets/img/image-footer-background.gif) repeat-x top;
+}
+
+.gallery-viewer .caption {
+	background-color: #fff;
+	padding-top: 10px;
+	padding-right: 15px;
+}
+
+.gallery-viewer .credit {
+	padding-right: 15px;
+	background-color: #fff;
+}
+
+#picture-selector {
+	text-align: center;
+	border-top: solid 1px #000000; 
+	border-bottom: solid 1px #000000;		 
+	background: #666666; 
+	position:relative;
+	color: #ffffff;
+	padding: 0px;
+	overflow: auto;	
+	background-image: url("/staticfiles/NGS/Global/ApplicationAssets/img/picture-selector-background.gif");
+	width:110px;
+	height:289px;
+}
+
+#picture-selector img {		
+	width: 75px;
+	height: 51px; 
+	border: 2px solid #000000;
+	margin-top: 10px;
+	margin-bottom:10px;
+	margin-left: 10px;
+}
+
+#picture-selector img:hover {		
+	border: 2px solid #ffcc00;
+}
+
+#picture-selector a#selected{		
+	background-image: url("/staticfiles/NGS/Global/ApplicationAssets/img/picture-selector-arrow.gif");
+	background-repeat: no-repeat;
+	background-position: 0% 50%;
+	display:block;
+}
+
+#picture-selector a#selected img{
+	border: 2px solid #ffffff;
+}
+	
+
+
+
+
+/* =Category Overview	
+-----------------------------------------------------------------------------*/
+.category-overview h2 {
+	font-size: 18px;
+	font-weight: 400;
+	padding-bottom: 12px;
+}
+
+
+/* =Poll
+-----------------------------------------------------------------------------*/
+#poll {
+	margin-bottom: -15px;
+}
+
+.promo #poll p {
+	font-weight: bold;
+	font-size: 13px;
+	color: #000;
+}
+
+#poll ul {
+	margin-top: 0;
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+#poll li {
+	list-style: none;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	vertical-align: middle;
+	font-size: 12px;
+	padding-left: 0px;
+}
+
+#poll input {
+	margin-right: 3px;
+	margin-top: 3px;
+}
+
+#poll_content, .poll {
+	margin: 0px;
+}
+
+.poll_ftr {
+}
+
+.but_vote {
+	display: block;
+	cursor: pointer;
+	width: 65px;
+}
+
+
+
+
+/* =Sponsors Right Rail Collection (for type 'sponsors-right-rail')
+-----------------------------------------------------------------------------*/
+
+
+#content-right-rail .sponsors-right-rail h2 {
+	font-size: 10px;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	color: #333333;
+	font-weight: normal;
+	padding-top: 2px;
+}
+
+#content-right-rail .sponsors-right-rail .body {
+	padding: 5px 13px 0px 15px;
+	border: none;
+}
+
+#content-right-rail .sponsors-right-rail .promo .thumb img { 
+	margin-top: 3px;
+	border: 1px solid;
+	margin-right: 10px;
+}
+
+#content-right-rail .sponsors-right-rail h3 {
+	font-size: 14px;
+	margin-bottom: 2px;
+	font-weight: bold;
+} 
+
+#content-right-rail .sponsors-right-rail .promo .action {
+	margin-top: 3px;
+	display: none;
+}
+
+#content-right-rail .sponsors-right-rail .footer {
+	height: 10px;           
+}
+
+#content-right-rail .sponsors-right-rail .promo {
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+/* =Horizontal Collection (for type 'horizontal', displays horizontally with simple underline header)
+-----------------------------------------------------------------------------*/
+.horizontal .header, .rss .header {
+	background-color: #fff;
+}
+
+.horizontal h2, .rss h2 {
+	color: #000000;
+	padding-right: 5px;
+	padding-left: 0px;
+	margin-left: 0px;
+	border-bottom: 1px solid #cccccc;
+	width: 100%;
+	padding-bottom: 2px;
+}
+
+#content-center-well .horizontal .body,
+#content-center-well .rss .body {
+	padding-top: 12px;
+	border: none;
+	background: none;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#content-center-well .horizontal .promo {
+	margin: 0px;
+	border: none;
+	width: 210px;
+	float: left;
+	margin-right: 30px;
+	padding-bottom: 0px;
+} 
+
+#content-center-well .horizontal .promo .thumb img {
+	margin-right: 10px;
+} 
+
+
+#content-center-well .horizontal .promo-last {
+	margin-right: 0px;
+}
+
+.horizontal .promo h3 {
+	font-size: 13px;
+	margin-bottom: 4px;
+}
+
+
+
+
+/* =RSS Collection (for type 'rss', no header)
+-----------------------------------------------------------------------------*/
+#content-center-well .rss .header,
+#content-center-well .rss .body,
+#content-center-well .rss .footer,
+#content-center-well .horizontal .header,
+#content-center-well .horizontal .body,
+#content-center-well .horizontal .footer {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#content-center-well .promo .rss { /* bug in XSL applies this style twice.. need to fix */
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#content-center-well .rss h3 {
+	font-size: 16px;
+	color: #000000;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ded3de;
+}
+
+#content-center-well .horizontal footer,
+.rss footer {
+	border: none;
+	background: none;
+}
+
+#content-center-well .info-text {
+	font-size: 11px;
+	clear: both;
+}
+
+#content-center-well .rss .info-text { /* here, displays adjacent to "RSS" button */
+	clear: none;
+	display: inline;
+}
+
+
+#content-center-well .info-text a {
+	text-decoration: underline;	
+}
+
+.rss .action {
+	float: left;
+	padding-left: 10px;
+	font-weight: bold;
+	padding-bottom: 4px;
+	padding-top: 4px;
+}
+
+.collection .rss .rss-button {
+	padding-left: 10px;
+	float: left;
+	padding-right: 10px;
+}
+
+
+
+
+
+/* =Two-Column Collection (for type 'two-column', displays horizontally with no header)
+-----------------------------------------------------------------------------*/
+
+#content-center-well .two-column .header {
+	display: none;
+}
+
+#content-center-well .two-column h3 {
+	color: #000000;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 3px;
+	margin-bottom: 8px;
+}
+
+#content-center-well .two-column {
+	margin-left: 15px;
+}
+
+#content-center-well .two-column .promo {
+	margin: 0px;
+	float: left;
+	margin-right: 25px;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+#content-center-well .two-column .promo-last {
+	margin-right: 10px;
+	margin-left: 0px;
+}
+
+#content-center-well .two-column .body {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	margin-right: 0px;
+}
+
+
+
+/* quick fix! must be changed in XSL! */
+#content-center-well .two-column .promo .thumb img {
+	width: 102px;
+	height: 68px;
+}
+
+
+
+
+/* =Multimedia Collection (for skin override 'multimedia', currently overrides type 'topics-center-well' on the home page)
+-----------------------------------------------------------------------------*/
+#content-center-well .multimedia .header {  }
+
+#content-center-well .multimedia .body {
+	border: none;
+	color: #ffffff;
+	padding: 20px 4px 8px 24px;
+}
+
+#content-center-well .multimedia .multimedia-chrome-link {
+	float: left;
+	margin-bottom:6px;
+	margin-top: 0px;
+}
+
+#content-center-well .multimedia .multimedia-chrome-icon {
+	float: left;
+	padding-right: 6px;
+}
+
+#content-center-well .multimedia .multimedia-chrome-link a {
+	color: #fff;
+	margin-bottom: 10px;
+	font-size: 13px;
+	margin-top: 6px;
+	padding-right: 10px;
+	display: block;
+}
+
+
+
+
+/* =Right Rail Collection (for type 'right-rail')
+-----------------------------------------------------------------------------*/
+
+#content-right-rail .right-rail .header,
+#content-right-rail .right-rail h2,
+#content-right-rail .right-rail .footer {
+	display: none;
+}
+
+#content-right-rail h3 {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+#content-right-rail .right-rail .promo {
+	margin: 0px;
+	padding-bottom: 16px;
+	border-bottom: 1px dashed #dbdbdb;
+	margin-bottom: 16px;
+}
+
+#content-right-rail .right-rail .promo-last {
+	border-bottom: 0;
+	margin-bottom: 0;
+}
+
+#content-right-rail .promo .thumb img { 
+	margin-top: 2px;
+	margin-right: 10px;
+}
+
+#content-right-rail .right-rail p {
+	margin-top: 0px;
+} 
+
+#content-right-rail .right-rail .action,
+#content-right-rail .sponsors-right-rail .action { 
+	margin-top: 3px;
+}
+
+#content-right-rail .topics-right-rail .action { 
+	margin-top: 0px;
+}
+
+#content-right-rail .fact .body {
+}
+
+
+
+
+/* =Multiple Floating Boxes
+-----------------------------------------------------------------------------*/
+/* hack to make the boxes float */
+
+/* Outer div for all the boxes */
+#category-article-list,
+.gallery,
+.gallery-index,
+.other {
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+/* Outer div for individual box 
+#category-article-list .article-promo,
+.gallery .promo,
+.gallery-index .promo,
+.other .promo {
+	float: left;
+	vertical-align: top;  
+}
+*/
+
+/* Inner div/table for individual box 
+#category-article-list .article-promo table,
+.gallery .promo table,
+.gallery-index .promo table,
+.other .promo table {
+	display: block;
+}
+*/
+
+/* Same inner div  as above 
+@media all and (min-width: 0px) {
+#category-article-list .article-promo table,
+.gallery .promo table,
+.gallery-index .promo table,
+.other .promo table {
+		display: inline-block;
+	}
+}
+*/
+
+/* Same outer div for individual box as above 
+#category-article-list .article-promo,
+.gallery .promo,
+.gallery-index .promo,
+.other .promo {
+	*display: inline; 
+	*_height: 0;
+}
+
+*/
+
+
+/* =Gallery Index (sized for skygrid layout) - All Galleries in a Site
+-----------------------------------------------------------------------------*/
+
+.gallery-index .category-name {
+	font-size: 16px;
+}
+
+.gallery-index .body {
+	border: none;
+	padding: 14px 0px 14px 0px;
+}
+
+.gallery-index .promo {
+	float: left;
+	width: 115px;
+	height: 120px;
+	overflow: visible;
+	margin-bottom: 10px;
+}
+
+.gallery-index .thumb img { 
+	height: 50px;
+	width: 75px;
+	border: 1px solid;
+}
+
+.gallery-index .promo h3 {
+	font-size: 12px;
+	font-weight: normal;
+	margin-top: 4px;
+	margin-right: 15px;
+}
+
+
+
+/* =Category Gallery List (sized for skygrid layout) - All Galleries in a Category
+-----------------------------------------------------------------------------*/
+.category-gallery-list {
+	margin-bottom: 14px;
+}
+
+.category-gallery-list .body {
+	padding: 14px 0px 14px 0px;
+}
+
+.category-gallery-list .promo {
+	float: left; 
+	width: 175px;
+	height: 160px;
+	margin-bottom: 10px;
+	float: left;
+	overflow: visible;
+	padding-right: 13px;
+}
+
+.category-gallery-list .thumb img {
+	width: 150px;
+	height: 100px;
+	border: 1px solid;
+}
+
+.category-gallery-list .promo h3 {
+	font-size: 12px;
+	font-weight: normal;
+	margin-top: 4px;
+}
+
+.category-gallery-list .image-count {
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+}
+
+
+/* =Gallery Promo: related galleries (shown on a gallery page)
+-----------------------------------------------------------------------------*/
+/*
+.gallery .promo p, .gallery .promo .action {
+	 display: none;  breaking firefox, must be fixed in XSL 
+}
+
+
+.gallery .promo-last h3 {
+	display: none; 
+}
+ */
+#content-center-well .gallery .body {
+	padding-right: 0px;
+}
+
+
+#content-center-well .gallery .promo h3 {
+	font-size: 12px;
+	padding-left: 21px;
+	margin-top: 7px;
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-photo-gallery.gif') no-repeat #ffffff;
+	margin-right: 16px;
+}
+
+#content-center-well .gallery .promo {
+	float: left;
+	width: 140px;
+	height: 142px;
+	overflow: visible;
+}
+
+
+
+
+/* ="Other": displayed like a gallery promo
+-----------------------------------------------------------------------------*/
+
+#content-center-well .other .body {
+	padding-right: 0px;
+}
+
+#content-center-well .other .promo h3 {
+	font-size: 12px;
+	margin-top: 3px;
+	margin-right: 16px;
+}
+
+#content-center-well .other .promo {
+	float: left;
+	width: 110px;
+	height: 135px;
+	padding-right: 0px;
+}
+
+#content-center-well .other .promo table {
+	width: 100%;
+}
+
+
+
+
+/* =Category Article List
+-----------------------------------------------------------------------------*/
+
+#category-article-list .article-promo p {
+	padding-bottom: 3px;
+	margin-right: 15px;
+}
+
+
+#category-article-list .article-promo {
+	float: left;
+	width: 288px;
+	height: 110px;
+}
+
+#category-article-list .thumb {
+	padding-top: 3px;
+	padding-right: 12px;
+}
+
+#category-article-list .thumb img {
+	border: 1px solid;
+	width: 102px;
+	height: 68px;
+}
+
+#category-article-list .article-promo .action {
+}
+
+#category-article-list h3 {
+	margin-bottom: 6px;
+}
+
+
+
+/* =Site Map List
+-----------------------------------------------------------------------------*/
+.sitemap {
+	padding: 0px;
+	width: 175px;
+	float: left;
+	margin-top: 10px;
+}
+
+.sitemap h3 {
+} 
+
+.sitemap .list-container .list-item {
+	padding-bottom: 3px;
+	padding-right: 10px;
+}
+
+.classification-menu {
+	padding: 5px;
+	margin: 0px 14px 3px 18px; 
+}
+
+
+/* =Map
+-----------------------------------------------------------------------------*/
+/* usage: <div class="map-key"><span style="background-color: #ffcc00"></span>The Label Goes Here</div> */
+
+.map-key span {
+	display: block;
+	float: left;
+	width: 14px;
+	height: 14px;
+	margin-right: 8px;
+	margin-top: -1px;
+	border: 1px solid #000;	
+}
+
+.map-key {
+	clear: both;
+	margin-bottom: 14px;
+}
+
+
+/* =GLOBAL NAVIGATION
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* =Header Logo 
+-----------------------------------------------------------------------------*/
+#global-header-logo {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_header_logo.gif') no-repeat;
+	width: 200px;
+	height: 54px;
+	float: left;
+	text-align: left;
+}
+
+#global-header-logo img {
+	margin-left: 10px;
+}
+
+
+/* =Header Search
+-----------------------------------------------------------------------------*/
+#global-header-search {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_header_search.gif') no-repeat #ffffff;
+	width: 360px;
+	height: 54px;
+	float: left;
+	text-align: right;
+}
+
+.global-search-container {
+	margin-left: 85px;
+	margin-top: 8px;
+}
+
+.globalSearchBox { width: 189px; height: 16px; padding: 0px; margin: 0px; overflow: hidden; }
+.globalSearchInput { width: 189px; height: 17px; border: 0px; padding: 0px; margin: 0px; }
+
+.global-search-input-td {
+	border: 1px solid #d7d7d7;
+	border-right: 0px;
+	height: 15px;
+}
+
+
+/* =Header Links
+-----------------------------------------------------------------------------*/
+#global-header-links {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_header_links.gif') no-repeat;
+	width: 420px;
+	height: 54px;
+	float: left;
+	text-align: center;
+}
+
+#global-header-links .menu-item a {
+	font-size: 11px;
+	color: #ffffff;
+	font-weight: bold;
+	margin: 8px 0px 0px 15px;
+	float: left;
+}
+
+
+/* =Header Ad
+-----------------------------------------------------------------------------*/
+#global-header-ad {
+	background: #fff url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_header_ad.jpg') repeat-x;
+	width: 750px;
+	height: 103px;
+	float: left;
+	padding: 6px 0px 3px 15px;
+}
+
+
+/* =Header Plug
+-----------------------------------------------------------------------------*/
+#global-header-plug {
+	background: #fff url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_header_plug.jpg') repeat-x;
+	width: 230px;
+	height: 103px;
+	float: left;
+	text-align: center;
+}
+
+
+/* =Left Navigation
+-----------------------------------------------------------------------------*/
+#global-left-nav {
+	width: 140px;
+	background-color: #858585;
+}
+
+#global-left-nav .header {
+	height: 10px;
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_left_nav_topshadow.gif') repeat-x;
+	background-position: top;
+}
+
+#global-left-nav .body {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_left_nav_shadow.gif') repeat-y;
+	font-weight: bold;
+}
+
+#global-left-nav .menu-item {
+	font-size: 11px;
+	text-transform: uppercase;
+	border-top: 1px solid #999999;
+}
+
+#global-left-nav .first {
+	border-top: 0;
+}
+
+#global-left-nav .menu-item a {
+	display: block;
+	padding: 4px 10px 4px 13px;
+	color: #fff;
+}
+
+#global-left-nav .last {
+	color: #ffffff;
+	border-bottom: 1px solid #999999;
+}
+
+#global-left-nav .selected {
+	background: #fbfbfb;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-color: #FBFBFB;
+}
+
+#global-left-nav .menu-item a {  }
+
+#global-left-nav .menu-item a:hover {
+	text-decoration: none;
+	color: #fc0;
+}
+
+#global-left-nav .selected a,
+#global-left-nav .selected a:hover { color: #044e8e; }
+
+#global-left-nav .home a,
+#global-left-nav .home a:hover { color: #000000; cursor: default; }
+
+
+
+/* create space between the two nav sections and keep the UL intact */
+#global-left-nav .menu-item-space { 
+	border-top: 1px solid #999999;
+	height: 36px;
+}
+
+#global-left-nav .footer {
+	background: url('/staticfiles/NGS/Global/ApplicationAssets/img/bg_left_nav_bottomshadow.gif') repeat-x #ffffff;
+}
+
+
+/* =Left Sub Navigation -- homepage only -- top 5 list
+-----------------------------------------------------------------------------
+#global-left-subnav {
+	background-color: #ffffff;
+	width: 140px;
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+#global-left-subnav img {
+	text-align: center;
+	margin-left: 14px;
+	margin-bottom: 6px;
+}
+
+#global-left-subnav h3 {
+	font-size: 15px;
+	color: #cc6600;
+	font-weight: bold;
+	margin-left: 14px;
+	margin-bottom: 10px;
+}
+
+#global-left-subnav .menu-item {
+	font-size: 12px;
+	color: #044e8e;
+	padding: 6px 10px 3px 26px;
+	text-indent: -13px;
+	color: #044e8e;
+	border-bottom: 1px dashed #dbdbdb;
+}
+
+*/
+
+/* =Left Sub Navigation 1 - shops
+-----------------------------------------------------------------------------*/
+#global-left-subnav1 {
+	background-color: #ffffff;
+	width: 140px;
+	margin-bottom: 30px;
+}
+
+#global-left-subnav1 img {
+	margin-bottom: 8px;
+}
+
+#global-left-subnav1 .menu-item {
+	font-size: 12px;
+	font-weight: bold;
+	color: #044e8e;
+	padding: 0px 4px 4px 10px;
+	margin:  6px 6px 0px 14px;
+	border-bottom: 1px dashed #dbdbdb;
+	background: #fff url(/staticfiles/NGS/Global/ApplicationAssets/img/art-bullet-31659C.gif) no-repeat 0px 4px;
+}
+
+#global-left-subnav1 .menu-item a:hover {
+	text-decoration: underline;
+}
+
+
+/* =Left Sub Navigation 2 - newsletters
+-----------------------------------------------------------------------------*/
+#global-left-subnav2 {
+	background-color: #ffffff;
+	width: 140px;
+	margin-bottom: 20px;
+}
+
+#global-left-subnav2 h3 {
+	font-size: 20px;
+	color: #cc6600;
+	margin-left: 14px;
+	font-weight: bold;
+	margin-top: -2px;
+}
+
+#global-left-subnav2 h4 {
+	font-size: 15px;
+	color: #cc6600;
+	margin-left: 14px;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+#global-left-subnav2 p {
+	margin-bottom: 4px;
+	margin-left: 14px;
+	color: #666666;
+}
+
+#global-left-subnav2 .action {
+	margin-bottom: 4px;
+	margin-left: 14px;
+}
+
+
+/* =Left Sub Navigation 3 - advertisement
+-----------------------------------------------------------------------------*/
+#global-left-subnav3 {
+	background-color: #ffffff;
+	width: 120px;
+	text-align: left;
+	padding-top: 15px;
+	border-top: 1px dashed #dbdbdb;
+	padding-bottom: 15px;
+	border-bottom: 1px dashed #dbdbdb;
+	margin-left: 14px;
+}
+
+.digg-widget h1 { 
+	width: 180px !important; 
+} 

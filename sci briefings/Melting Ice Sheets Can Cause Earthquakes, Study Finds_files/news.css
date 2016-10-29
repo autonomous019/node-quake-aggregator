@@ -1,0 +1,1755 @@
+@import "http://www.nationalgeographic.com/global/css/nav-news.css";
+
+/*
+	This is the section (site) specific css for environment.
+	It contains unique elements such as color schemes and backgrounds.
+	Please fewer comments in here and add more comments to the wiki at
+	http://wiki.nationalgeographic.com/index.php/Site-wide_CSS_implementation
+*/
+
+
+/* =Body
+-----------------------------------------------------------------------------*/
+body {
+	background: #fff url('/images/page_bg.jpg') repeat-x top center;
+}
+
+
+/* =Content Container - page background (defaults to UL rounded corner)
+-----------------------------------------------------------------------------*/
+
+#content-container, #content-container-home {
+	background: #fff url('/images/ngnews_header_08.jpg') no-repeat;
+	width: 808px;
+	border-top: #666 1px solid;
+	padding-left: 18px;
+	margin: 0px;
+}
+
+.inside-nav-container {
+	padding-top: 0px;
+	padding-bottom: 6px;
+}
+
+.header-date {
+	float: right;
+	margin: -2px 4px 2px 0px;
+	padding: 0px; height: 1.4em;
+}
+
+.header-date h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px !important; 
+	color: #333333 !important;
+}
+
+.header-nav-top {
+	clear: both;
+	background: #fff url('/images/header_nav_top.gif') no-repeat;
+	height: 4px !important;
+}
+
+.header-nav-menu {
+	clear: both;
+	width: 808px;
+	background: #fff url('/images/header_nav_bg.gif') repeat-y;
+}
+
+.header-nav-bottom {
+	background: #fff url('/images/header_nav_bottom.gif') no-repeat;
+	height: 11px;
+}
+
+.nav-main {
+	float: left;
+	width: 675px;
+	padding: 9px 0px 5px 17px;
+}
+
+.nav-alt {
+	float: left;
+	width: 100px;
+	padding: 9px 0px 5px 9px;
+}
+
+#content-container-home .nav-main .menu-item {
+	margin-right: 20px !important;
+}
+
+.nav-main .menu-item {
+	margin-right: 12px !important;
+	font-family:Verdana, sans-serif;
+}
+
+.nav-alt .menu-item {
+	margin-right: 9px !important;
+}
+
+.nav-main .menu-item a {
+	color: #ffffff;
+	font-size: 11px;
+}
+
+.nav-alt .menu-item a {
+	color: #5c533a;
+	font-size: 11px;
+}
+
+#main-header {
+	margin: 0px;
+	border-bottom: none;
+}
+
+#main-header h2 {
+	color: #000;
+	font-size: 15px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#main-header h4 {
+	color: #000;
+	font-size: 11px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 8px;
+}
+
+/* =News promo module
+-----------------------------------------------------------------------------*/
+#content-center-well .news .promo-last h3 {
+	display: none;
+}
+
+#content-center-well .news .promo {
+	padding-right: 40px;
+	padding-bottom: 15px;
+	border-bottom: 1px dashed #dbdbdb;
+	margin-bottom: 15px;
+}
+
+
+/* =How you can help promo module
+-----------------------------------------------------------------------------*/
+#content-center-well .help h3 {
+	font-size: 12px;
+	font-weight: normal;
+	background: #fff url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-bullet-31659C.gif) no-repeat 0px 4px;
+	padding-left: 8px;
+}
+
+
+/* =A-Z List	
+-----------------------------------------------------------------------------*/
+.a-z-list .list-item {
+	width: 162px;
+	float: left;
+	display: inline;
+	background: #fff url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-bullet-000000.gif) no-repeat 0px 4px;
+}
+
+.a-z-list .list-item a {
+	padding-bottom: 3px;
+	padding-right: 15px;
+	padding-left: 8px;
+	display: block;
+	height: 26px;
+}
+
+.a-z-list .list-container {
+	margin-bottom: 18px;
+	clear: both;
+}
+
+.a-z-list h2 {
+	clear: both;
+	margin-top: 16px;
+	margin-bottom: 12px;
+}
+
+
+/* =Multimedia box icons	
+-----------------------------------------------------------------------------*/
+#content-center-well .multimedia .body {
+	border: none;
+	color: #ffffff;
+	padding: 10px 4px 0px 15px;
+}
+
+#content-center-well .multimedia .audio {
+	/* position: relative;
+	left: -10px; */
+}
+
+
+
+#content-center-well .multimedia .print {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-print.gif) no-repeat 3px top;
+
+}
+
+#content-center-well .multimedia .gallery {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-gallery.gif) no-repeat 3px top;
+	margin-bottom: 0; /* overrides overlapping gallery declaration */
+
+}
+
+#content-center-well .multimedia .video {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-video.gif) no-repeat 5px 3px;
+}
+
+#content-center-well .multimedia .game {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-game.gif) no-repeat 3px top;
+
+}
+
+#content-center-well .multimedia .profile {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-profile.gif) no-repeat 3px top;
+
+}
+#content-center-well .multimedia .wallpaper {
+	background: url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-icon-wallpaper.gif) no-repeat 3px top;
+
+}
+
+/* =Animal-specific styles
+-----------------------------------------------------------------------------*/
+.latin-name {
+	font-size: 13px;
+	color: rgb(153, 153, 153);
+	font-weight: 400;
+	font-style: italic;
+}
+
+
+
+
+	
+/* =Multimedia Box
+-----------------------------------------------------------------------------*/
+#content-center-well .multimedia {
+	border: 1px solid #e5dcd1;
+	border-top: 0;
+}
+
+
+#content-center-well .multimedia .header h2 {
+	color: #000;
+	font-size: 15px;
+	padding-top: 10px;
+}
+
+#content-center-well .multimedia h3 {
+	font-size: 12px;
+	font-weight: 400;
+	padding-left: 25px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	padding-right: 10px;
+}
+
+
+	
+/* =Fact (For Fact Box)
+-----------------------------------------------------------------------------*/
+
+#content-center-well .fact .list-item,
+#content-center-well .fact .profile-text,
+#content-center-well .fact .fastfact { /* must apply padding elements to these individually, so photo can break the grid */
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+#content-center-well .fact a.endangered { 
+	color: #FF0000;
+}
+
+#content-center-well .fact h2 {
+	font-size: 17px;
+	color: #fff;
+	padding-top: 4px;
+}
+
+#content-center-well .fact .list-item, #content-center-well .fact .fastfact {
+	margin-bottom: 8px;	
+}
+
+#content-center-well .fact .relative-size {
+	text-align: center;
+	margin-top: 3px;	
+}
+
+
+/* =Poll
+-----------------------------------------------------------------------------*/
+.but_vote {
+	background: url('http://animals.nationalgeographic.com/staticfiles/NGS/Environment/SiteAssets/img/buttons/poll-votebutton-white.gif') 0 0 no-repeat;
+}
+
+
+/* =Map Legend -- should move to global eventually
+-----------------------------------------------------------------------------*/
+.map img {
+	border: 1px solid #000;
+}
+
+.legend img {
+	vertical-align: text-bottom;
+	margin-right: 8px;
+	margin-top: 5px;
+}
+
+
+/* =Audio Credits
+-----------------------------------------------------------------------------*/
+
+.audio-credits .list-item {
+	padding-left: 10px;
+	padding-bottom: 8px;
+	background: #fff url(http://animals.nationalgeographic.com/staticfiles/NGS/Global/ApplicationAssets/img/art-bullet-000000.gif) no-repeat 0px 4px;
+}
+
+.audio-credits h2 {
+	padding: 10px 0px 10px 0px;
+}
+
+
+/* =Sponsors Right Rail Collection (for type 'sponsors-right-rail')
+-----------------------------------------------------------------------------*/
+
+#content-right-rail .sponsors-right-rail h2 {
+	color: #d1a75f;
+}
+
+#content-right-rail .sponsors-right-rail h3 {
+	color: #fff;
+} 
+
+#content-right-rail .sponsors-right-rail h3 a {
+	color: #fff;
+} 
+
+#content-right-rail .sponsors-right-rail .promo p {
+	color: #e6cdac;
+}
+
+#content-right-rail h3 {
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.sponsor {
+	margin: 0px !important;
+	padding: 0px !important;
+	text-align: right;
+}
+
+.sponsor img {
+	margin-bottom: 20px;
+}
+
+img[src="http://abyss.nationalgeographic.com:80/ads/images/1999/clear.gif"] {
+	display: none;
+}
+
+img[src="http://abyss.nationalgeographic.com/ads/images/1999/clear.gif"] {
+	display: none;
+}
+
+/* Possible Ad Server change for IE6 */
+.sponsor .no-ad {
+	display: none;
+}
+
+.sponsor-article {
+	float: right;
+	padding-top: 10px;
+	padding-right: 14px;
+}
+
+/* =Special DIVs added for "Expand for More" (should be global eventually)
+-----------------------------------------------------------------------------*/
+div.XpanderContainer { text-align: right; }
+img.XpanderToggleImg { display: inline; margin-bottom: 5px; margin-top: 10px; cursor: pointer; }
+div.XpanderClip { text-align: left; }
+
+
+/* Patch for old news content */
+
+
+.NewsContent {
+	width: 804px;
+	background-color: #ffffff;
+	padding: 0px 18px 0px 18px;
+}
+
+.centerContentWell {
+	margin-top: 0px !important;
+	width: 480px;
+}
+
+.galleryContentWell {
+	width: 480px;
+}
+
+.rightContent {
+	width: 300px;
+	padding: 0px 0px 0px 20px;
+}
+
+
+.centerContentWell .rightContent {
+	width: 210px;
+}
+
+.centerContentWell .date {
+	font-size: 10px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.rightContent H1 {
+	font-size: 16px;
+}
+
+.NewsStories {
+	padding-top: 1px;
+	padding-bottom: 11px;
+	clear: both;
+	font-size: 12px;
+	font-weight: bold;
+	clear: both;
+}
+
+.NewsStories div {
+	width: 227px !important;
+	float: right;
+}
+
+.NewsStories h3 {
+	padding: 0px;
+	margin-bottom: 3px;
+}
+
+.NewsStories h3 a {
+	text-transform: uppercase;
+	color: #000;
+}
+
+.NewsStories p {
+	font-weight: normal;
+	color: #044e8e;
+}
+
+.NewsStories-nav {
+	clear: both;
+	font-weight: bold;
+	color: #044e8e;
+	margin: 0px 0px 5px 0px;
+}
+
+.NewsStories-nav div {
+	padding-right: 8px;
+	margin-right: 8px;
+}
+
+.NewsStories a {
+/*
+	text-decoration: underline;
+*/
+}
+
+.NewsStories li {
+	font-size:11px;
+	margin-top:0px;
+	font-weight:normal;
+	padding-bottom:0px;
+	margin-bottom:0px;
+}
+
+.NewsStories h1 {
+	margin-top: 0px;
+	font-size: 16px;
+	padding-bottom:0px;
+	margin-bottom:0px;
+	font-weight: bold;
+}
+
+.NewsStories ul {
+ 	margin-top: 5px;
+ 	margin-bottom: 5px;
+}
+
+.NewsStories img {
+	padding: 2px;
+	border: 1px solid #ccc;
+}
+
+.thumb {
+/* applied to thumbnail IMG tags */
+	border: 1px solid #ccc;
+	padding: 2px;
+	margin-right:8px;
+}
+
+.photo {
+/* applied to photos (not thumbnails) */
+	margin-bottom: 5px;
+	border: 1px solid #000;
+}
+
+/* bolded for IE by kurtw */
+.moreTopStories h1, .moreTopStories h3, .catpageHeadline {
+	clear: both;
+	margin-top:12px;
+	font-size: 16px;
+	font-weight: normal; /* 12.16.05 made normal, chuckychange */
+        text-decoration:none;
+	padding-top:18px;
+	margin-bottom:3px;
+	border-top: 1px solid #ddd;
+}
+
+/* Photo Gallery, Photo In the News, Video in the News Styles ------------------------ */
+
+.photoInNews {
+	border: 1px solid #666;
+	margin-right:8px;
+	margin-bottom:5px;
+}
+
+.photoGalleryImage {
+	text-align:center;
+	margin-top:0px;
+	margin-right: 0px; /* so that in mac/ie there is a buffer btwn the image and the ad, chuckychange */
+	margin-bottom:10px;
+	padding: 0px;
+}
+
+.photoGalleryImage IMG {
+	padding: 2px;
+	border: 1px solid #000;
+	background-color: #fff;
+}
+
+.photoGalleryCaption {
+	font-size: 12px;
+	line-height: 16px;
+	text-align:left;
+	margin-top: 20px;
+}
+
+
+.photoGalleryCredit {
+	font-size:11px;
+	font-style:italic;
+	margin-bottom: 25px;
+	margin-top: 12px;
+}
+
+.galleryThumb img {
+	text-align:center;
+	margin-left:15px;
+	border: 1px solid #ccc;
+	margin-bottom:10px;
+	padding: 2px;
+}
+
+.galleryThumbHigh {
+/* currently active image */
+	margin-left:0px;
+	padding-left:15px;
+	margin-bottom:10px;
+}
+
+.galleryThumbHigh img {
+	border: 2px solid #000;
+}
+
+.galleryThumbColumn {
+/* column for long line of thumbnails */
+	margin-top: 3px;
+	text-align: right;
+	margin-left: 5px;
+}
+
+
+
+
+
+.galleryThumbRow .galleryRowThumb {
+	float: left;
+	width: 50px; height: 50px;
+	margin-left:0px;
+	margin-bottom:10px;
+	padding: 0px;
+}
+
+.galleryThumbRow .galleryRowThumb img {
+	border: 1px solid #ccc;
+}
+
+.galleryThumbRow .galleryRowThumbAtv {
+	float: left;
+	width: 50px; height: 50px;
+	margin-left:0px;
+	margin-bottom:10px;
+	padding: 0px;
+}
+
+.galleryThumbRow .galleryRowThumbAtv img {
+	border: 1px solid #000;
+}
+
+.galleryThumbRow .galleryThumbRefer {
+/* "More News Photos" link at bottom of line of thumbnails */
+clear: both;
+width: 60%;
+margin-left: 0px;
+font-size: 11px;
+text-align: left;
+}
+
+.galleryThumbRow {
+/* column for long line of thumbnails */
+	margin-top: 3px;
+	margin-left: 0px;
+	width: 65px;
+}
+
+
+
+
+
+
+.enlargePhotoPageTitle {
+/* page title for the "Enlarge Photo" page */
+	font-size:20px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.galleryThumbRefer {
+/* "More News Photos" link at bottom of line of thumbnails */
+width: 45px;
+margin-left: 0px;
+font-size: 11px;
+text-align: center;
+
+}
+
+/* Widget styles ------------------------------------------------ */
+
+.editorsPicks, .readersPicks { /* the container div */
+/* top margin added 2005-12-12, kurtw */     
+	margin-top: 10px;
+	margin-bottom: 30px;
+	margin-right: 15px;  /* padding for PC/NET, chuckychange */
+}
+
+.navPicks { /* picks in the top header bar */
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	
+}
+
+.navPicks, .navPicks a {
+font-size: 11px;
+}
+
+.navPicks h3 {
+	font-size: 11px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	margin-top: 0;
+	color: #000;
+}
+
+
+.editorsPicks h1, h3, .readersPicks h1, h3, .navPicks h1, h3 { /* The title "Editor's Picks" */
+	margin-top: 0px;
+	font-size: 12px;
+	padding-bottom:0px;
+	margin-bottom:5px;
+	font-weight: bold;
+}
+
+h4 {
+	font-size:11px;
+	font-weight:bold;
+	color: #333;
+}
+
+.readersPicks h3 {
+	font-size: 12px;
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+/* Story Styles --------------------------------------------- */
+
+.story, .enlargePhotoPage { /* general story text */
+	font-size: 13px;
+	line-height: 16px;
+}
+
+/* bolded for IE by kurtw */
+.story h1, .storyhead, h1 { /* story headline */
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+	margin-top:0px;
+	margin-bottom:8px;
+	line-height:1.2em;
+}
+
+.story p,.photoGalleryCaption p,.galleryContentWell p {
+	margin-bottom: 1em;
+}
+
+.intro {
+	font-size:15px;
+	font-weight:normal;
+	font-style:normal;
+	line-height:1.3em;
+	color:#343434;
+	margin-top:10px;
+}
+
+
+.inlinedate { /* currently, both "National Geographic News" and the story date are classed this */
+	font-weight:normal;
+	color: #666666;
+	font-style: normal;
+}
+
+
+.captionContainer { /* deprecated: holds the caption in the regular-sized photo */
+	padding-left:8px;
+	padding-right:8px;
+	padding-top:4px;
+	border-top: 1px solid #999;
+	font-size:11px;
+	margin-top:0px;
+	line-height:12px;
+        background: #fff;
+}
+
+
+.splitnav { /* container for "<< previous page" in story body */
+	font-size: 13px;
+	font-weight:bold;
+
+}
+
+.splitnavR, .cont {
+/* container for "next page >>" in story body */
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
+	margin-bottom: 25px;
+}
+
+/* Category/Index Page Styles ------------------------------------------ */
+
+.topStoryCaption { /* Photo caption in the topmost story on aggregate pages */
+	padding-top:5px;
+	font-size:9px;
+	font-style:italic;
+}
+
+.topStory { /* topmost story on aggregate pages */
+	margin-top:1px;
+	padding-top:0px;
+	margin-bottom:6px;
+	clear: both;
+}
+
+.topStory p {
+	margin-top:0px;
+	padding-top:0px;
+	font-size:12px !important;
+}
+
+.topStory h1 {
+	margin-top:0px;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom:2px;
+}
+
+.topStory-TypeA {
+	padding-left: 3px;
+}
+
+.topStory-TypeA div {
+	float: right;
+	width: 270px;
+	padding-left: 25px;
+	padding-right: 10px;
+}
+
+.topStory-TypeA img {
+	padding: 2px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+.topStory-TypeB-Content {
+	width: 140px;
+	float: left;
+	padding-left: 5px;
+}
+
+.topStory-TypeB-Promo {
+	width: 270px;
+	border-left: 1px solid #ccc;
+	margin-left: 165px;
+	margin-bottom: 30px;
+	padding-left: 25px;
+}
+
+.topStory-TypeB-Promo img, .topStory-TypeC img {
+	margin-bottom: 10px;
+	padding: 2px;
+	border: 1px solid #ccc;
+}
+
+.NewsContent h1, .newsTitle {
+	margin-top:0px;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom:2px;
+	padding-top: 0px;
+	width: 480px;
+}
+
+.newsTitle {
+	margin-left: 0px !important;
+	text-align: left;
+}
+
+.newsTitleHome {
+	font-size: 11px ! important;
+	padding-top: 0px ! important;
+	margin-bottom: 0px ! important;
+}
+
+.topStory h2 {
+	margin-top:0px;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom:10px;
+}
+
+.topStory-TypeB-Promo h2 {
+	padding-bottom: 5px;
+}
+
+.topStory h3 {
+	margin-top:0px;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom:2px;
+}
+
+.topStory-TypeB-Content h3 {
+	font-size: 18px;
+}
+
+.topStory-TypeC {
+	margin-bottom: 30px;
+}
+
+.topStory-TypeC h3 {
+	font-size: 21px;
+}
+
+.topStory-TypeB-Content p, .topStory-TypeC p {
+	font-size: 13px;
+}
+
+.moreTopStories p {
+	font-size:13px;
+	margin-top:0px;
+	margin-bottom:0px;
+	line-height: 16px;
+	padding-right: 15px;
+}
+
+/* bolded for IE by kurtw */
+.moreTopStories h1, .moreTopStories h3, .catpageHeadline {
+	margin-top:12px;
+	font-size: 16px;
+	font-weight: normal; /* 12.16.05 made normal, chuckychange */
+        text-decoration:none;
+	padding-top:18px;
+	margin-bottom:3px;
+	border-top: 1px solid #ddd;
+}
+
+.centerContentWell .topStory H1 {
+	font-size: 20px;
+}
+
+.centerContentWell .moreTopStories {
+	clear: both;
+	margin-top: -10px !important;
+}
+
+.centerContentWell .moreTopStories H1 {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.centerContentWell .categorizedStories H1 a {
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.catpageDate {
+	font-size: 11px;
+	font-weight: bold;
+	color: #9b8d5c;
+	padding-top: 5px;
+}
+
+.categorizedStories {
+	padding-top:0px;
+	margin-top: 7px;
+        /* disabled, chuckychange */
+	/* border-top: 1px solid #ddd; */
+}
+
+.categorizedStories ul {
+  	display:block;
+	font-size:12px;
+	margin-top:0px;
+	margin-bottom:0px;
+	margin-left:15px;
+	padding-left: 9px;
+	padding-top:0px;
+	padding-bottom:0px;
+ 	list-style-image: url(http://news.nationalgeographic.com/news/images/global2005/listMarker.gif);
+}
+
+.categorizedStories li {
+	margin: 0px;
+	padding: 0px;
+}
+
+.categorizedStories h1, .categorizedStories h3 {
+	font-size: 16px;
+	font-weight: bold;
+	color:#000000;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:0px;
+	padding-top:14px;
+	border-top: 1px solid #ddd;
+}
+
+.categorizedStories h1 a:hover, .categorizedStories h3 a:hover {
+	text-decoration:underline;
+}
+
+.categorizedStories h1 a, .categorizedStories h3 a {
+	text-decoration:none;
+	color: #000000;
+}
+
+.categoryTitle {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 26px;
+	font-weight:bold;
+	padding-top:5px;
+	padding-bottom:0px;
+	width: 480px;
+}
+
+.categoryTopStory {
+	margin-top:15px;
+	padding-top:0px;
+	margin-bottom:10px;
+}
+
+.categoryTopStory p {
+	font-size:14px;
+}
+
+.categoryTopStory h1 {
+	margin-top:0px;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom:2px;
+}
+
+.bottomLinks { /* numbered list of pages at the bottom of category aggregate pages */
+	font-size:14px;
+	margin-top:30px;
+	margin-bottom:10px;
+}
+
+.SideBarHeader {
+	color: #FFFFFF;
+	font-size:11px;
+	font-weight:bold;
+	padding-left:5px;
+	padding-top:5px;
+	padding-bottom:5px;
+	display: block;
+	background: #993300;
+	border:1px solid #000;
+	
+}
+
+.sideBar {
+	font-size:12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top:2px;
+	margin-top:0px;
+	padding-top:10px;
+	padding-bottom:5px;
+	margin-bottom: 15px;
+	border-left:1px solid #999;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+	display: block;
+	background: #FFFFFF;
+	font-style:normal;
+}
+
+
+.sideBar h1 {
+	font-size:16px;
+}
+
+.sideBar p {
+	font-size:12px;
+	line-height:18px;
+}
+
+.sideBar a {
+	font-weight:bold;
+}
+
+.teaser2colLeft {
+/* apply to left column of 2-column teaser box */
+	margin-right: 15px;
+	border-right: 1px solid #ccc;
+	padding-right: 15px;
+}
+
+
+
+.inlinesubs {
+	margin-bottom: 30px;
+}
+
+
+#storyInlineBox {
+/* enlargeable photo, related links box that floats in story */
+	font-size: 11px;
+	line-height: 13px;
+	width: 172px;
+	float:left;
+	border: 1px solid #ccc;
+	margin-top: 3px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+#storyInlineBoxGallery {
+/* specific for photogallery */
+	font-size: 11px;
+	line-height: 13px;
+	width: 172px;
+	float:right;
+	border: 1px solid #ccc;
+	margin-top: 3px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+#storyInlineBox p {
+	margin-top: 2px;
+	margin-bottom: 4px
+}
+
+#storyInlineBox .caption, #storyInlineBox .section {
+/* a section of the inline box. places rule below each section */
+padding-bottom: 9px;
+border-bottom: 1px solid #ccc;
+margin-bottom: 9px;
+
+}
+
+#storyInlineBox .caption {
+/* caption below photo in inline box */
+font-style: italic;
+}
+
+
+.Pick, .LastPick { /* the container for each pick */
+	margin-bottom:15px;
+}
+
+.Pick p, .LastPick p {
+	font-size:11px;
+	margin-top:0px;
+	font-weight:normal; /* made normal, 12-16-05, chuckychange */
+	padding-bottom:0px;
+	margin-bottom:0px;
+	
+}
+
+/* bolded for IE by kurtw */
+.Pick h1, .LastPick h1, .Pick h4, .LastPick h4  {
+	font-size:12px;
+	font-weight:normal;
+	margin-bottom: 3px;
+	margin-top: 0px;
+}
+
+.LastPick h1  {
+	margin-right: -12px;
+}
+
+
+/* bolded for IE by kurtw */
+.LastPick {
+	padding-bottom:2px;
+	font-weight:bold;
+} 
+
+
+.PickRefer {
+	/* Line for "More Videos in the News" link, "More Photos in the News", etc. */
+	margin-top: 0px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.boxHeader {
+	font-size:12px;
+	font-weight:bold;
+	margin-bottom: 5px;
+}
+
+.boxHeader_nomargin { /* needed for places where TOP MOST POP go with NEWS FEEDS, chuckychange */
+	font-size:12px;
+	font-weight:bold;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	line-height: 14px;
+}
+
+.boxContent {
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	list-style-type: none;
+	font-weight: normal;
+	line-height: 20px;
+}
+
+.boxContent p {
+	font-size:12px;
+	margin-bottom: 0.5em;
+}
+
+.boxContent a {
+	font-weight:normal;
+}
+
+.boxContent ul {
+	margin-top:0;
+	padding-top:0;
+	padding-bottom:0;
+	margin-bottom:0;
+  	display: block;
+ 	margin-left: 0px;
+	list-style-type:none;
+}
+
+.boxContent li {
+ 	padding-bottom:4px;
+	padding-top:4px;
+	margin-bottom: 0px;
+}
+
+.boxContent-related {
+	margin-left: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	list-style-type: none;
+	font-weight: normal;
+	line-height: 20px;
+	border-bottom: 1px solid #ccc;
+}
+
+.boxContent-share {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 12px;
+	margin-bottom: 12px;
+}
+
+.boxContent-share a {
+	display: block;
+	padding: 3px 0px 3px 20px;
+	margin: 5px 0px 0px 0px;
+}
+
+.boxContent-share .digg {
+	background: #fff url(/images/share_icon_digg.jpg) no-repeat;
+}
+
+.boxContent-share .stumbleupon {
+	background: #fff url(/images/share_icon_stumbledupon.jpg) no-repeat;
+}
+
+.boxContent-share .reddit {
+	background: #fff url(/images/share_icon_reddit.jpg) no-repeat;
+}
+
+.boxContent-share .yahoo {
+	background: #fff url(/images/share_icon_yahoo.jpg) no-repeat;
+}
+
+.boxContent-subscribe a {
+	display: block;
+	padding: 3px 0px 3px 20px;
+	margin: 0px;
+	background: #fff url(/images/share_icon_email.jpg) no-repeat;
+}
+
+.tool, img.tool, .photoGalleryImage .tool { /* for icons. style to IMG tag */
+	padding-right:5px;
+	vertical-align:text-top;
+	border: none; padding-top: 0px;
+}
+
+
+.galleryRelatedBox {
+/* this is a float-right box in the extended captions of PIN, VIN, and photo galleries. */
+
+	font-size: 11px;
+	line-height: 13px;
+	width: 172px;
+	float: right;
+	border: 1px solid #ccc;
+	margin-left: 15px;
+	margin-bottom: 12px;
+	padding: 10px; 
+	
+}
+
+/* Category/Index Page Styles ------------------------------------------ */
+
+#global-left-nav li {
+	line-height: 1.3em;
+	margin-bottom: 0px;
+}
+
+.news-header {
+	padding-bottom: 10px;
+}
+
+.editorsPicks td h1 {
+	padding-top: 0px;
+}
+
+.boxAd {
+	margin: 18px 0px 30px 0px;
+}
+
+#content-container-home #main-header .inside-nav-container-home {
+	padding-bottom: 6px;
+	clear: both;
+}
+
+.inside-nav-container-home .menu-item {
+	font-size: 11px ! important;
+}
+
+.vinVideo { padding-bottom: 10px; }
+
+.podcastModule, .widgetModule, .mapModule {
+	font-size: 12px; 
+	color: #000000;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+
+.podcastModule h3, .widgetModule h3, .mapModule h3 {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.podcastLink {
+	border-color:#666666; 
+	color:#333333;
+	margin-right: 10px;
+}
+
+img.podcastLink {
+	border: 1px solid #666666; 
+}
+
+.widgetLink, .mapLink {
+	color:#333333;
+	margin-right: 7px;
+}
+
+.podcastModule .content, .widgetModule .content {
+	padding-left:0px;
+	font-size: 12px; color: #333333;
+}
+
+.mapModule .content {
+	padding-left:0px;
+	font-size: 12px; color: #333333;
+}
+
+.mapModule img {
+	padding: 2px;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+}
+
+.widgetModule img {
+	margin-right: 10px;
+}
+
+.podcastModule .header, .widgetModule .header, .mapModule .header {
+	font-size: 12px; color: #044e8e; padding-bottom: 2px; font-weight: bold;
+}
+
+.podcastModule .header .podcastLink, .widgetModule .header .widgetLink, .mapModule .header .mapLink {
+	color: #044e8e; text-decoration: none;
+}
+
+.podcastModule .header, .podcastModule .promo .podcastLink, .widgetModule .header, .widgetModule .promo .widgetLink, .mapModule .header, .mapModule .promo .mapLink {
+	color: #044e8e; text-decoration: none;
+}
+
+.podcastModule .promo {
+	padding-top: 5px;
+	font-size: 12px; color: #044e8e;
+}
+
+.widgetModule .promo, .mapModule .promo {
+	padding-top: 5px;
+}
+
+.widgetModule .body a, .mapModule .body a {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.newsModule {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.newsletterModule {
+	margin-bottom: 15px;
+}
+
+.newsletterModule p {
+	margin-bottom: 0.5em;
+}
+
+.galleryContentWell h1 {
+	margin-left: -20px;
+}
+
+#main-footer {
+	padding-bottom: 25px;
+}
+
+.emailNewsletter-column {
+	background: #fff url(/images/email_bg.jpg) no-repeat;
+	width: 245px;
+	padding: 15px 12px 5px 15px;
+	margin-top: 15px;
+}
+
+.emailNewsletter-module {
+	background: #fff url(/images/email_rightrail_bg.jpg) no-repeat;
+	width: 270px;
+	padding: 15px 15px 5px 15px;
+	margin-top: 5px;
+}
+
+.emailNewsletter-article {
+	background: #fff url(/images/email_article_bg.jpg) no-repeat;
+	width: 450px;
+	padding: 15px 14px 25px 15px;
+	margin-top: 5px;
+}
+
+.emailNewsletter-column h3, .emailNewsletter-module h3  {
+	font-size: 12px;
+	color: #000;
+	padding-bottom: 6px;
+}
+
+.emailNewsletter-article h3 {
+	margin-top: 0px !important;
+	padding-top: 0px !important;
+	font-size: 12px;
+	color: #000;
+	padding-bottom: 5px;
+}
+
+.emailNewsletter-column h3 span, .emailNewsletter-module h3 span {
+	display: block;
+	padding-top: 8px;
+	color: #d47e00;
+}
+
+.emailNewsletter-article h3 span {
+	padding-top: 8px;
+	padding-left: 10px;
+	color: #d47e00;
+}
+
+.emailNewsletter-article p {
+	display: block;
+	width: 260px;
+	float: left;
+}
+
+.emailNewsletter-article-form {
+	padding-left: 260px;
+}
+
+.emailNewsletter-column-footer {
+	width: 272px;
+	height: 5px !important;
+	background: #fff url(/images/email_bg_footer.jpg) no-repeat;
+}
+
+.emailNewsletter-module-footer {
+	width: 300px;
+	height: 5px !important;
+	background: #fff url(/images/email_rightrail_bg_footer.jpg) no-repeat;
+	margin-bottom: 25px;
+}
+
+.emailNewsletter-article-footer {
+	width: 479px;
+	height: 5px !important;
+	background: #fff url(/images/email_article_bg_footer.jpg) no-repeat;
+	margin-bottom: 15px;
+}
+
+.emailNewsletter-column form, .emailNewsletter-module form {
+	padding-top: 5px;
+}
+
+.emailNewsletter-column .emailAddress, .emailNewsletter-module .emailAddress {
+	float: left;
+}
+
+.emailNewsletter-article .emailSignup {
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+.emailNewsletter-article .emailAddress input {
+	width: 150px;
+}
+
+.emailNewsletter-module .emailAddress input {
+	width: 170px;
+	height: 15px;
+}
+
+.emailNewsletter-column .emailAddress input {
+	width: 140px;
+	height: 15px;
+}
+
+.emailNewsletter-column .emailSignup, .emailNewsletter-module .emailSignup {
+	padding-top: 1px;
+	float: right;
+}
+
+.emailNewsletter-column .emailPrivacy, .emailNewsletter-module .emailPrivacy {
+	display: block;
+	clear: both;
+	padding-top: 5px; 
+}
+
+.emailNewsletter-confirm {
+	color: #666;
+	font-size: 11px;
+}
+
+div.emailNewsletter-confirm, div.emailNewsletter-error {
+	margin-top: 10px;
+	display: none;
+}
+
+#emailEntryRR {
+	margin-top: 10px;
+}
+
+.emailNewsletter-confirm em {
+	background: url(/images/email_icon_thankyou.gif) no-repeat;
+	color: #d47e00;
+	padding-left: 16px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.emailNewsletter-error {
+	font-size: 11px;
+	color: #f00;
+	font-weight: bold;
+}
+
+.boxHeader-whatsthis {
+	float: right;
+}
+
+.boxHeader-whatsthis a {
+	font-weight: normal;
+	font-size: 11px;
+}
+
+/* Comment CSS */
+
+.comments {
+	border-top: 1px solid #ccc;
+	padding-top: 15px;
+}
+
+.comments h3 {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 10px;
+	color: #000;
+}
+
+.comments h4 {
+	font-weight: normal;
+	font-size: 12px;
+	color: #535353;
+	display: inline;
+}
+
+ul.comments-show, ul.comments-navigation {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	font-size: 12px;
+}
+
+ul.comments-show li {
+	float: left;
+}
+
+ul.comments-navigation li {
+	float: right;
+	padding-left: 15px;
+}
+
+#comment-show {
+	display: none;
+}
+
+a.comment-hide {
+	display: block;
+	padding-left: 15px;
+	background: url(/images/comment-show.gif) no-repeat;
+}
+
+a.comment-show {
+	display: block;
+	text-indent: 15px;
+	background: url(/images/comment-hide.gif) no-repeat;
+}
+
+li.rss {
+	background: url(/images/comment-rss.jpg) no-repeat;
+}
+
+#comment-display, div.comment p {
+	clear: both; 
+}
+
+div.comment p {
+	margin-bottom: 1em;
+}
+
+#comment-display {
+	margin-bottom: 20px;
+}
+
+div.comment {
+	border-top: 1px solid #a6a6a6; 
+	background-color: #dae7f3;
+	padding: 10px 15px 10px 10px;
+}
+
+.comment-header .hide {
+	display: none;
+}
+
+.comment-header img {
+	float: left;
+	border: 1px solid #ccc;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+.comment-header h3, .comment-header .timestamp {
+	width: 300px;
+	font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.button-flag {
+	float: right;
+	margin-top: -1.2em;
+}
+
+.button-flag:hover {
+	float: right;
+}
+
+.button-flag span {
+	font-size: 11px;
+	font-weight: bold;
+	color: #044e8e !important;
+}
+
+.flag-comment {
+	margin-bottom: 15px;
+}
+
+.flag-comment p {
+	font-size: 11px;
+}
+
+.flag-comment ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	font-size: 11px;
+}
+
+.flag-comment li {
+	margin: 0px;
+}
+
+.flag-comment, .flag-comment #confirmation {
+	display: none;
+}
+
+#not-authenticated span {
+	color: #044e8e;
+}
+
+#authenticated #error {
+	padding-top: 10px;
+	color: #f00;
+	display: none;
+}
+
+.flag-comment textarea {
+	width: 450px;
+}
+
+#authenticated textarea {
+	width: 480px;
+}
+
+#authenticated .comments-tos {
+	font-size: 11px;
+	width: 400px;
+	float: right;
+	color: #535353;
+}
+
+#authenticated button {
+	width: 68px;
+	text-align: center;
+	margin-top: 4px;
+}
+
+#not-authenticated {
+	clear: both;
+	display: block;
+	padding-bottom: 20px;
+}
+
+#authenticated {
+	clear: both;
+	display: none;
+	padding-bottom: 20px;
+}
+
+#authenticated #userinfo {
+	text-align: right;
+	width: 300px;
+	float: right;
+}
+
+#userinfo em {
+	font-style: normal;
+	color: #044e8e;
+}
+
+#userinfo span {
+	border-right: 2px solid #044e8e;
+	margin-right: 8px;
+	padding: 0px 8px;
+}
+
+#userinfo a {
+	font-weight: bold;
+}
+
+#comment-add em {
+	font-weight: bold;
+	font-style: normal;
+	color: #000 !important;
+	text-transform: uppercase !important;
+}
+
+#not-authenticated em {
+	display: block;
+}
+
+#not-authenticated div {
+	border: 1px solid #000;
+	height: 100px;
+	padding: 10px;
+	font-weight: bold !important;
+}
+
+#email, #emailRR {
+	font-size: 10px;
+	color: #666;
+}
+
+.header-title a {
+	display: block;
+	height: 68px;
+	text-indent: -9999px;
+}
