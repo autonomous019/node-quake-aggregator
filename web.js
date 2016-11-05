@@ -46,6 +46,26 @@ MongoClient.connect(url, function(err, db) {
 });
 
 
+/* requesting info from NOAA using curl */
+/* don't forget to >npm install request */
+var requester = require('request');
+
+url='http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01';
+
+requester({
+    url: 'http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
+    method: 'GET',
+    headers: { 'token': 'SmGOPcOMJzsnZvYSNdugaaOqBDzoOiPu' },
+    },
+    function (error, response, body) {
+        if (error) throw error;
+        console.log(body);
+    }
+);
+
+
+
+
 //data models and others
 var posterEngine = require('./poster');
 
@@ -53,6 +73,8 @@ var posterEngine = require('./poster');
 app.get('/', function(req, res) {
 	res.render('index',{title:"QN: Home", entries:""});
 });
+
+
 
 ///**** POST CONTROLLER ***///
 app.post('/post', function(req, res){ 
