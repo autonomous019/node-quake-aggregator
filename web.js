@@ -42,12 +42,13 @@ MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server");
     //removeDocuments(db);  //comment this out when ready for production
-    findDocuments(db);
+    //findDocuments(db);
 });
 
 
 /* requesting info from NOAA using curl */
 /* don't forget to >npm install request */
+/*
 var requester = require('request');
 
 url='http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01';
@@ -62,6 +63,21 @@ requester({
         console.log(body);
     }
 );
+*/
+
+/*  read cache files then populate into mongodb */
+
+var fs = require('fs');
+/*
+fs.readFile('cache/test_file.js', 'utf8', function(err, data) {  
+    if (err) throw err;
+    console.log(data);
+});
+
+*/
+
+
+
 
 
 
@@ -74,7 +90,46 @@ app.get('/', function(req, res) {
 	res.render('index',{title:"QN: Home", entries:""});
 });
 
+///**** MAIN or INDEX CONTROLLER ***///
+    app.get('/file-parser', function(req, res) {
+        fs.readFile('cache/test_file.js', 'utf8', function(err, data) {  
+        if (err) throw err;
+        var q_json_data = JSON.parse(data);
+        console.log(q_json_data['properties']);
+  for (var key in q_json_data) {
+    
+    var cnt = 0;
+    var obj_collection = {};
 
+    for (var k in q_json_data[key]){
+         
+        //obj_collection = q_json_data[key]['properties'];
+        
+        
+       /* obj_collection.coordinates = JSON.stringify(q_json_data[key]['geometry']['coordinates']);
+        obj_collection.date_time = poster_controller.convertTimestamp(q_json_data[key]['properties']['time']);
+        obj_collection.uid = q_json_data[key]['id'];
+        var uid = q_json_data[key]['id'];
+        //var exists = poster_controller.itemExists(uid, obj_collection);
+        console.log(obj_collection);
+        */
+    
+        
+    cnt++;
+    if(cnt > 0){
+        break;
+    }
+        
+   }
+  }    
+            
+        console.log(data['properties']);
+    });
+    
+    
+    
+	res.render('file-parser',{title:"Quakes File Parser", entries:""});
+});
 
 ///**** POST CONTROLLER ***///
 app.post('/post', function(req, res){ 
@@ -98,7 +153,7 @@ app.post('/post', function(req, res){
         obj_collection.uid = q_json_data[key]['id'];
         var uid = q_json_data[key]['id'];
         var exists = poster_controller.itemExists(uid, obj_collection);
-        console.log('exists is '+ exists);
+        //console.log('exists is '+ exists);
         
     
         
